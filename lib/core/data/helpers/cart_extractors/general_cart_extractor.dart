@@ -11,7 +11,6 @@ import 'package:collection/collection.dart';
 import 'package:html/dom.dart' as dom;
 
 import 'package:drop_shopping_app/core/domain/models/cart_item_keys.dart';
-import 'package:drop_shopping_app/core/domain/models/drop_shopping_product.dart';
 
 class GeneralCartExtractor {
   GeneralCartExtractor._internal();
@@ -106,7 +105,6 @@ class GeneralCartExtractor {
   static Future<List<SomeElement>> someWebsite(String body) async {
     final children = await isolate.Isolate.run<List<SomeElement>>(() {
       SomeElement decodeItem(beautiful.Bs4Element item) {
-        final itemType = item.runtimeType;
         final options = item.findAll('option');
         List<String?> values = [];
         for (final option in options) {
@@ -145,7 +143,6 @@ class GeneralCartExtractor {
       final soup = beautiful.BeautifulSoup(content);
       // var html = dom.Document.html(content);
       final allLists = soup.findAll('select');
-      final aaa = soup.find('option[selected="selected"]');
       List<SomeElement> products = [];
       for (final item in allLists) {
         final element = decodeItem(item);

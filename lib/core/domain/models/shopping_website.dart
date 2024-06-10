@@ -13,6 +13,7 @@ class ShoppingWebsite extends Equatable {
   final String? image;
   final ShoppingWebsiteVendor vendor;
   final List<CartItemKeyDetails> keys;
+  final String? script;
   const ShoppingWebsite({
     required this.id,
     required this.name,
@@ -20,6 +21,7 @@ class ShoppingWebsite extends Equatable {
     required this.image,
     required this.vendor,
     required this.keys,
+    this.script,
   });
 
   @override
@@ -40,6 +42,7 @@ class ShoppingWebsite extends Equatable {
           ? []
           : List<CartItemKeyDetails>.from(
               map['keys'].map((e) => CartItemKeyDetails.fromMap(e))),
+      script: map['script'],
     );
   }
 }

@@ -1,9 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 //
 import 'dart:convert';
+import 'dart:developer' as developer;
 import 'dart:isolate';
 
 import 'package:drop_shopping_app/core/data/dtos/js_products_stuff.dart';
+import 'package:drop_shopping_app/features/products_list_screen/products_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:html/dom.dart' as dom;
 import 'package:my_core/my_core.dart';
@@ -11,7 +13,6 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 import 'package:drop_shopping_app/core/domain/models/drop_shopping_product.dart';
 import 'package:drop_shopping_app/core/domain/models/shopping_website.dart';
-import 'package:drop_shopping_app/features/handle_string/handle_string_screen.dart';
 
 class AppWebView extends StatefulWidget {
   const AppWebView({
@@ -234,61 +235,22 @@ class _AppWebViewState extends State<AppWebView> {
     //           )));
     // }
 
-// var e = document.getElementById("myselect").value;
-// e
+    final script = widget.website.script;
+    if (script == null) {
+      return;
+    }
+
     try {
-      final body = await controller.runJavaScriptReturningResult('''
+      final body =
+          await controller.runJavaScriptReturningResult(script) as String;
+      final stuff = productsStuffResponseFromJson(body).toModel().toProducts();
 
-function getQuantities() {
-  return Array.from(document.querySelectorAll("article > div.Actions-module--actions__24Z1Z > div > div > div > select")).map((x) => x.value);
-}
-
-function getImages() {
-  return Array.from(document.querySelectorAll("article > a > div > img")).map((x)=>x.src);
-}
-
-function getTitles() {
-  return Array.from(document.querySelectorAll("article > div.CartItem-module--details__3xy60 > a > h2")).map((x)=>x.textContent);
-}
-
-function getPrices() {
-  return Array.from(document.querySelectorAll("article > div.CartItem-module--details__3xy60 > span")).map((x)=>x.textContent);
-}
-
-function getUrls() {
-  return Array.from(document.querySelectorAll("article > div.CartItem-module--details__3xy60 > a")).map((x)=>x.href);
-}
-
-function getColors() {
-  Array.from(document.querySelectorAll("#sidebar-sticky-boundary > section.CartItemsList--wrapper__2s_UW > div > ul > li > article > div.CartItem-module--details__3xy60 > ul > li:nth-child(2) > span.d1cd7b.b7f566.CartItemDetails-module--value__AcUPn")).map((x)=> x.childNodes[0].textContent);
-}
-
-function toObject(){
-
-    var dict = {
-        titles: [],
-        images: [],
-        prices: [],
-        urls: [],
-        colors: [],
-        sizes: [],
-        quantities: []
-    };
-
-    dict.titles.push.apply(dict.titles, getTitles());
-    dict.images.push.apply(dict.images, getImages());
-    dict.prices.push.apply(dict.prices, getPrices());
-    dict.urls.push.apply(dict.urls, getUrls());
-    dict.quantities.push.apply(dict.quantities, getQuantities());
-    return dict;
-
-}
-toObject();
-''') as String;
-      final stuff = productsStuffResponseFromJson(body).toModel();
-      print(stuff.toString());
+      if (context.mounted) {
+        context.navigator.push(MaterialPageRoute(
+            builder: (_) => ProductsListScreen(products: stuff)));
+      }
     } catch (e) {
-      print(e.toString());
+      developer.log(e.toString());
     }
     setState(() {
       isLoading = false;

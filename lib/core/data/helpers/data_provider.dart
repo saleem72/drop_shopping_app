@@ -57,6 +57,60 @@ class DataProvider {
           "attribute": null
         },
       ],
+      "script": '''
+
+function getQuantities() {
+  return Array.from(document.querySelectorAll("article > div.Actions-module--actions__24Z1Z > div > div > div > select")).map((x) => x.value);
+}
+
+function getImages() {
+  return Array.from(document.querySelectorAll("article > a > div > img")).map((x)=>x.src);
+}
+
+function getTitles() {
+  return Array.from(document.querySelectorAll("article > div.CartItem-module--details__3xy60 > a > h2")).map((x)=>x.textContent);
+}
+
+function getPrices() {
+  return Array.from(document.querySelectorAll("article > div.CartItem-module--details__3xy60 > span")).map((x)=>x.textContent);
+}
+
+function getUrls() {
+  return Array.from(document.querySelectorAll("article > div.CartItem-module--details__3xy60 > a")).map((x)=>x.href);
+}
+
+function getColors() {
+  return Array.from(document.querySelectorAll("#sidebar-sticky-boundary > section.CartItemsList--wrapper__2s_UW > div > ul > li > article > div.CartItem-module--details__3xy60 > ul > li:nth-child(2) > span.d1cd7b.b7f566.CartItemDetails-module--value__AcUPn")).map((x)=> x.childNodes[0].textContent);
+}
+
+function getSizes() {
+  return Array.from(document.querySelectorAll("#sidebar-sticky-boundary > section.CartItemsList--wrapper__2s_UW > div > ul > li > article > div.CartItem-module--details__3xy60 > ul > li:nth-child(3) > span.d1cd7b.b7f566.CartItemDetails-module--value__AcUPn")).map((x)=> x.childNodes[0].textContent);
+}
+
+function toObject(){
+
+    var dict = {
+        titles: [],
+        images: [],
+        prices: [],
+        urls: [],
+        colors: [],
+        sizes: [],
+        quantities: []
+    };
+
+    dict.titles.push.apply(dict.titles, getTitles());
+    dict.images.push.apply(dict.images, getImages());
+    dict.prices.push.apply(dict.prices, getPrices());
+    dict.urls.push.apply(dict.urls, getUrls());
+    dict.colors.push.apply(dict.colors, getColors());
+    dict.sizes.push.apply(dict.sizes, getSizes());
+    dict.quantities.push.apply(dict.quantities, getQuantities());
+    return dict;
+
+}
+toObject();
+''',
     }),
     // - adidas
     ShoppingWebsite.fromJson(const {
@@ -108,7 +162,61 @@ class DataProvider {
             "classValue": 'cart-line-item-attribute-size'
           }
         },
-      ]
+      ],
+      "script": '''
+
+function getTitles() {
+  return Array.from(document.querySelectorAll("div > div.line-item___i5rwj.line-item__border-redesign___cp6Bq > div.line-item__details-wrapper___hdXUf.col-s-7.col-m-7.col-l-12.offset-l-1.no-gutters > div.line-item__details-row___hV7vL.row > div.line-item__details___HibzD > div > div:nth-child(1) > div > a > span")).map((x)=> x.textContent);
+}
+
+function getQuantities() {
+  return Array.from(document.querySelectorAll("div > div.line-item__details-wrapper___hdXUf.col-s-7.col-m-7.col-l-12.offset-l-1.no-gutters > div.line-item__footer___UcQo4.row.gl-align-items-center > div.dropdown-container___mjvVf > div > div > select")).map((x)=>x.value);
+}
+
+function getImages() {
+  return Array.from(document.querySelectorAll("div > div > div.no-gutters.col-s-5.line-item__image-sizing-wrapper___a91cW > a > img")).map((x)=>x.src);
+}
+
+function getPrices() {
+  return Array.from(document.querySelectorAll("div > div.line-item__details-wrapper___hdXUf.col-s-7.col-m-7.col-l-12.offset-l-1.no-gutters > div.line-item__footer___UcQo4.row.gl-align-items-center > div.gl-hidden-m > div > div")).map((x)=>x.textContent);
+}
+
+function getUrls() {
+  return Array.from(document.querySelectorAll("div > div > div.no-gutters.col-s-5.line-item__image-sizing-wrapper___a91cW > a")).map((x)=>x.href);
+}
+
+function getColors() {
+  return Array.from(document.querySelectorAll("div > div.line-item__details-wrapper___hdXUf.col-s-7.col-m-7.col-l-12.offset-l-1.no-gutters > div.line-item__details-row___hV7vL.row > div.line-item__details___HibzD > div > div:nth-child(2) > div > span")).map((x)=>x.textContent);
+}
+
+function getSizes() {
+  return Array.from(document.querySelectorAll("div > div.line-item__details-wrapper___hdXUf.col-s-7.col-m-7.col-l-12.offset-l-1.no-gutters > div.line-item__details-row___hV7vL.row > div.line-item__details___HibzD > div > div.gl-vspace > div > div > span:nth-child(2)")).map((x)=>x.textContent);
+}
+
+function toObject(){
+
+    var dict = {
+        titles: [],
+        images: [],
+        prices: [],
+        urls: [],
+        colors: [],
+        sizes: [],
+        quantities: []
+    };
+
+    dict.titles.push.apply(dict.titles, getTitles());
+    dict.images.push.apply(dict.images, getImages());
+    dict.prices.push.apply(dict.prices, getPrices());
+    dict.urls.push.apply(dict.urls, getUrls());
+    dict.colors.push.apply(dict.colors, getColors());
+    dict.sizes.push.apply(dict.sizes, getSizes());
+    dict.quantities.push.apply(dict.quantities, getQuantities());
+    return dict;
+
+}
+toObject();
+'''
     }),
     // - Puma
     ShoppingWebsite.fromJson(const {

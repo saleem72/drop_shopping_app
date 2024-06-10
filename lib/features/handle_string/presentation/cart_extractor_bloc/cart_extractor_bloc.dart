@@ -63,7 +63,7 @@ class CartExtractorBloc extends Bloc<CartExtractorEvent, CartExtractorState> {
 
     emit(state.copyWith(isLoading: true));
     final startDate = DateTime.now();
-    final items = await GeneralCartExtractor.chaleno(state.website!.url);
+    final _ = await GeneralCartExtractor.chaleno(state.website!.url);
     final endDate = DateTime.now();
 
     emit(state.copyWith(

@@ -5,11 +5,10 @@
 
 import 'dart:convert';
 
+import 'package:drop_shopping_app/core/domain/models/drop_shopping_product.dart';
+
 ProductsStuffResponse productsStuffResponseFromJson(String str) =>
     ProductsStuffResponse.fromJson(json.decode(str));
-
-String productsStuffResponseToJson(ProductsStuffResponse data) =>
-    json.encode(data.toJson());
 
 class ProductsStuffResponse {
   List<String> titles;
@@ -30,29 +29,30 @@ class ProductsStuffResponse {
     required this.sizes,
   });
 
-  factory ProductsStuffResponse.fromJson(Map<String, dynamic> json) =>
+  factory ProductsStuffResponse.fromJson(Map<String, dynamic> decodedJson) =>
       ProductsStuffResponse(
-        titles: List<String>.from(json["titles"].map((x) => x)),
-        images: List<String>.from(json["images"].map((x) => x)),
-        quantities: List<String>.from(json["quantities"].map((x) => x)),
-        prices: json["prices"] == null
+        titles: decodedJson["titles"] == null
             ? []
-            : List<String>.from(json["prices"].map((x) => x)),
-        urls: json["urls"] == null
+            : List<String>.from(decodedJson["titles"].map((x) => x)),
+        images: decodedJson["images"] == null
             ? []
-            : List<String>.from(json["urls"].map((x) => x)),
-        colors: json["colors"] == null
+            : List<String>.from(decodedJson["images"].map((x) => x)),
+        quantities: decodedJson["quantities"] == null
             ? []
-            : List<String>.from(json["colors"].map((x) => x)),
-        sizes: json["sizes"] == null
+            : List<String>.from(decodedJson["quantities"].map((x) => x)),
+        prices: decodedJson["prices"] == null
             ? []
-            : List<String>.from(json["sizes"].map((x) => x)),
+            : List<String>.from(decodedJson["prices"].map((x) => x)),
+        urls: decodedJson["urls"] == null
+            ? []
+            : List<String>.from(decodedJson["urls"].map((x) => x)),
+        colors: decodedJson["colors"] == null
+            ? []
+            : List<String>.from(decodedJson["colors"].map((x) => x)),
+        sizes: decodedJson["sizes"] == null
+            ? []
+            : List<String>.from(decodedJson["sizes"].map((x) => x)),
       );
-
-  Map<String, dynamic> toJson() => {
-        "images": List<dynamic>.from(images.map((x) => x)),
-        "quantities": List<dynamic>.from(quantities.map((x) => x)),
-      };
 
   JSProductsStuff toModel() => JSProductsStuff(
         titles: titles,
@@ -91,5 +91,22 @@ class JSProductsStuff {
   @override
   String toString() {
     return 'titles: ${titles.length}, images: ${images.length}, quantities: ${quantities.length},\nprices: ${prices.length}, urls: ${urls.length}, colors: ${colors.length}, sizes: ${sizes.length}';
+  }
+
+  List<DropShoppingProduct> toProducts() {
+    final products = List.generate(
+      titles.length,
+      (index) => DropShoppingProduct(
+        title: titles[index],
+        image: images[index],
+        price: prices[index],
+        quantity: quantities[index],
+        url: urls[index],
+        color: colors[index],
+        size: sizes[index],
+      ),
+    );
+
+    return products;
   }
 }
