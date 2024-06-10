@@ -255,18 +255,30 @@ function getPrices() {
   return Array.from(document.querySelectorAll("article > div.CartItem-module--details__3xy60 > span")).map((x)=>x.textContent);
 }
 
+function getUrls() {
+  return Array.from(document.querySelectorAll("article > div.CartItem-module--details__3xy60 > a")).map((x)=>x.href);
+}
+
+function getColors() {
+  Array.from(document.querySelectorAll("#sidebar-sticky-boundary > section.CartItemsList--wrapper__2s_UW > div > ul > li > article > div.CartItem-module--details__3xy60 > ul > li:nth-child(2) > span.d1cd7b.b7f566.CartItemDetails-module--value__AcUPn")).map((x)=> x.childNodes[0].textContent);
+}
+
 function toObject(){
 
     var dict = {
         titles: [],
         images: [],
         prices: [],
+        urls: [],
+        colors: [],
+        sizes: [],
         quantities: []
     };
 
     dict.titles.push.apply(dict.titles, getTitles());
     dict.images.push.apply(dict.images, getImages());
     dict.prices.push.apply(dict.prices, getPrices());
+    dict.urls.push.apply(dict.urls, getUrls());
     dict.quantities.push.apply(dict.quantities, getQuantities());
     return dict;
 

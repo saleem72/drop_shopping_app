@@ -66,7 +66,7 @@ class ProductsStuffResponse {
 
   @override
   String toString() {
-    return 'titles: ${titles.length}, images: ${images.length}, quantities: ${quantities.length},\nprices: ${prices.length}';
+    return 'titles: ${titles.length}, images: ${images.length}, quantities: ${quantities.length},\nprices: ${prices.length}, urls: ${urls.length}, colors: ${colors.length}, sizes: ${sizes.length}';
   }
 }
 
@@ -90,6 +90,6 @@ class JSProductsStuff {
 
   @override
   String toString() {
-    return 'titles: ${titles.length}, images: ${images.length}, quantities: ${quantities.length},\nprices: ${prices.length}';
+    return 'titles: ${titles.length}, images: ${images.length}, quantities: ${quantities.length},\nprices: ${prices.length}, urls: ${urls.length}, colors: ${colors.length}, sizes: ${sizes.length}';
   }
 }
