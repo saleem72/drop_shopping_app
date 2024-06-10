@@ -1,0 +1,136 @@
+{
+    "data": [
+        {
+            "id": 8,
+            "name": "",
+            "url": "https://www.sephora.co.uk/",
+            "image": "https://s3.we-order.com/recourses/images/1694518706018.png",
+            "is_free": 1,
+            "status": 1
+        },
+        {
+            "id": 13,
+            "name": "",
+            "url": "https://shop.mango.com/gb/women?gclsrc=aw.ds&gbraid=0AAAAADqhEeNiAtsVlpe8xBbh0xy1D2sAh&gclid=Cj0KCQjwpompBhDZARIsAFD_Fp-E3PE6GZCxGoUM8FDrgGsWSXTjibaiPjU2K1MHwXy_bEiSHWBlbGEaAu9gEALw_wcB",
+            "image": "https://s3.we-order.com/recourses/images/1696755557567.jpeg",
+            "is_free": 1,
+            "status": 1
+        },
+        {
+            "id": 14,
+            "name": "",
+            "url": "https://www2.hm.com/en_gb/index.html",
+            "image": "https://s3.we-order.com/recourses/images/1696756504591.jpeg",
+            "is_free": 1,
+            "status": 1
+        },
+        {
+            "id": 15,
+            "name": "",
+            "url": "https://www.next.co.uk/",
+            "image": "https://s3.we-order.com/recourses/images/1696756809388.jpeg",
+            "is_free": 1,
+            "status": 1
+        },
+        {
+            "id": 16,
+            "name": "",
+            "url": "https://www.zara.com/uk/",
+            "image": "https://s3.we-order.com/recourses/images/1696756911668.jpeg",
+            "is_free": 1,
+            "status": 1
+        }
+    ],
+    "links": {
+        "first": "https://api.weorder.app/api/v1/shopping-websites?page=1",
+        "last": "https://api.weorder.app/api/v1/shopping-websites?page=21",
+        "prev": null,
+        "next": "https://api.weorder.app/api/v1/shopping-websites?page=2"
+    },
+    "meta": {
+        "current_page": 1,
+        "from": 1,
+        "last_page": 21,
+        "links": [
+            {
+                "url": null,
+                "label": "&laquo; Previous",
+                "active": false
+            },
+            {
+                "url": "https://api.weorder.app/api/v1/shopping-websites?page=1",
+                "label": "1",
+                "active": true
+            },
+            {
+                "url": "https://api.weorder.app/api/v1/shopping-websites?page=2",
+                "label": "2",
+                "active": false
+            },
+            {
+                "url": "https://api.weorder.app/api/v1/shopping-websites?page=3",
+                "label": "3",
+                "active": false
+            },
+            {
+                "url": "https://api.weorder.app/api/v1/shopping-websites?page=4",
+                "label": "4",
+                "active": false
+            },
+            {
+                "url": "https://api.weorder.app/api/v1/shopping-websites?page=5",
+                "label": "5",
+                "active": false
+            },
+            {
+                "url": "https://api.weorder.app/api/v1/shopping-websites?page=6",
+                "label": "6",
+                "active": false
+            },
+            {
+                "url": "https://api.weorder.app/api/v1/shopping-websites?page=7",
+                "label": "7",
+                "active": false
+            },
+            {
+                "url": "https://api.weorder.app/api/v1/shopping-websites?page=8",
+                "label": "8",
+                "active": false
+            },
+            {
+                "url": "https://api.weorder.app/api/v1/shopping-websites?page=9",
+                "label": "9",
+                "active": false
+            },
+            {
+                "url": "https://api.weorder.app/api/v1/shopping-websites?page=10",
+                "label": "10",
+                "active": false
+            },
+            {
+                "url": null,
+                "label": "...",
+                "active": false
+            },
+            {
+                "url": "https://api.weorder.app/api/v1/shopping-websites?page=20",
+                "label": "20",
+                "active": false
+            },
+            {
+                "url": "https://api.weorder.app/api/v1/shopping-websites?page=21",
+                "label": "21",
+                "active": false
+            },
+            {
+                "url": "https://api.weorder.app/api/v1/shopping-websites?page=2",
+                "label": "Next &raquo;",
+                "active": false
+            }
+        ],
+        "path": "https://api.weorder.app/api/v1/shopping-websites",
+        "per_page": 5,
+        "to": 5,
+        "total": 104
+    }
+}
