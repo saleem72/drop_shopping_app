@@ -1,7 +1,11 @@
 //
 
+import 'dart:developer';
+
 import 'package:drop_shopping_app/core/domain/models/drop_shopping_product.dart';
 import 'package:flutter/material.dart';
+// import 'package:intl/intl.dart';
+// import 'package:my_core/extensions/string_extension.dart';
 import 'package:my_core/my_core.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -15,6 +19,7 @@ class ShoppingProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // final currencyFormatter = NumberFormat.simpleCurrency();
     return Material(
       elevation: 4,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -42,6 +47,7 @@ class ShoppingProductCard extends StatelessWidget {
                   const SizedBox(height: 8),
                   FilledButton.tonal(
                     onPressed: () {
+                      log('url: ${product.url}', name: 'ShoppingProductCard');
                       if (product.url == null) {
                         return;
                       }

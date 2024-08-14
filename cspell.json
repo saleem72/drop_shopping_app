@@ -1,0 +1,15 @@
+{
+    "ignoreRegExpList": [
+        "/[\\u0621-\\u064A]+/"
+    ],
+    "words": [
+        "batk",
+        "LTWH",
+        "Nevermind",
+        "zipcode"
+    ],
+    "ignorePaths": [
+        "data_provider.dart",
+        "app_web_view.dart"
+    ]
+}

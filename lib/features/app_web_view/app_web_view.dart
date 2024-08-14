@@ -224,85 +224,76 @@ class _AppWebViewState extends State<AppWebView> {
       isLoading = true;
     });
 
-    // final body = await controller.runJavaScriptReturningResult(
-    //     "new XMLSerializer().serializeToString(document);") as String?;
+    const script = '''
 
-    // if (context.mounted) {
-    //   context.navigator.pushReplacement(MaterialPageRoute(
-    //       builder: (_) => HandleStringScreen(
-    //             website: widget.website,
-    //             page: body,
-    //           )));
+function getQuantities() {
+  return [];
+}
+
+function getImages() {
+  return [];
+}
+
+function getTitles() {
+  return Array.from(document.querySelectorAll("div > div > div.basket-product-title-container > a.product-title > span")).map((x) => x.textContent.trim());
+}
+
+function getPrices() {
+  return Array.from(document.querySelectorAll("div > div > div.bagItem-utils.h-display-ib.h-valign-t.h-align-r > p > b")).map((x) => x.textContent.trim());
+}
+
+function getUrls() {
+  return [];
+}
+
+function getColors() {
+  return [];
+}
+
+function getSizes() {
+  return [];
+}
+
+function toObject(){
+
+    var dict = {
+        titles: [],
+        images: [],
+        prices: [],
+        urls: [],
+        colors: [],
+        sizes: [],
+        quantities: []
+    };
+
+    dict.titles.push.apply(dict.titles, getTitles());
+    dict.images.push.apply(dict.images, getImages());
+    dict.prices.push.apply(dict.prices, getPrices());
+    dict.urls.push.apply(dict.urls, getUrls());
+    dict.colors.push.apply(dict.colors, getColors());
+    dict.sizes.push.apply(dict.sizes, getSizes());
+    dict.quantities.push.apply(dict.quantities, getQuantities());
+    return dict;
+
+}
+toObject();
+''';
+
+    // final script = widget.website.script;
+    // if (script == null) {
+    //   return;
     // }
-
-    final script = widget.website.script;
-    if (script == null) {
-      return;
-    }
-
-//     final script = '''
-
-// function getTitles() {
-//   return Array.from(document.querySelectorAll("div.css-k008qs.ei1batk0 > div > div.css-18o14p5.ezci20q3 > div.css-1u52liu.ezci20q1 > a > h2")).map((x)=>x.textContent);
-// }
-
-// function getQuantities() {
-//   return Array.from(document.querySelectorAll("div.css-k008qs.ei1batk0 > div > div.css-18o14p5.ezci20q3 > div.css-1u52liu.ezci20q1 > div.css-3x77rp.eyas8011 > div:nth-child(2) > div > select")).map((x)=>x.value);
-// }
-
-// function getImages() {
-//   return Array.from(document.querySelectorAll("div.css-k008qs.ei1batk0 > figure > a > picture > img")).map((x)=>x.src);
-// }
-
-// function getPrices() {
-//   return Array.from(document.querySelectorAll("div.css-k008qs.ei1batk0 > div > div.css-18o14p5.ezci20q3 > div.css-q2xuk9.ezci20q0 > p > span > span > span")).map((x)=>x.childNodes[1].textContent);
-// }
-
-// function getUrls() {
-//   return Array.from(document.querySelectorAll("div.css-k008qs.ei1batk0 > figure > a")).map((x)=>x.href);
-// }
-
-// function getColors() {
-//   return Array.from(document.querySelectorAll("div.css-k008qs.ei1batk0 > div > div.css-18o14p5.ezci20q3 > div.css-1u52liu.ezci20q1 > div.css-1f31asj.eneqjw10")).map((x)=>x.textContent);
-// }
-
-// function getSizes() {
-//   return Array.from(document.querySelectorAll("div.css-k008qs.ei1batk0 > div > div.css-18o14p5.ezci20q3 > div.css-1u52liu.ezci20q1 > div.css-3x77rp.eyas8011 > div:nth-child(1) > div > select")).map((x)=>x.options[x.selectedIndex].text);
-// }
-
-// function toObject(){
-
-//     var dict = {
-//         titles: [],
-//         images: [],
-//         prices: [],
-//         urls: [],
-//         colors: [],
-//         sizes: [],
-//         quantities: []
-//     };
-
-//     dict.titles.push.apply(dict.titles, getTitles());
-//     dict.images.push.apply(dict.images, getImages());
-//     dict.prices.push.apply(dict.prices, getPrices());
-//     dict.urls.push.apply(dict.urls, getUrls());
-//     dict.colors.push.apply(dict.colors, getColors());
-//     dict.sizes.push.apply(dict.sizes, getSizes());
-//     dict.quantities.push.apply(dict.quantities, getQuantities());
-//     return dict;
-
-// }
-// toObject();
-// ''';
 
     try {
       final body =
           await controller.runJavaScriptReturningResult(script) as String;
-      final stuff = productsStuffResponseFromJson(body).toModel().toProducts();
-      // print(stuff);
+      final stuff = productsStuffResponseFromJson(body).toModel();
+      // print(stuff.images);
+      final products = stuff.toProducts();
+
       if (context.mounted) {
         context.navigator.push(MaterialPageRoute(
-            builder: (_) => ProductsListScreen(products: stuff)));
+            builder: (_) => ProductsListScreen(products: products)));
       }
     } catch (e) {
       developer.log(e.toString());

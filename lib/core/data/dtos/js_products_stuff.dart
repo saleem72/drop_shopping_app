@@ -98,15 +98,19 @@ class JSProductsStuff {
       titles.length,
       (index) => DropShoppingProduct(
         title: titles[index],
-        image: images[index],
-        price: prices[index],
-        quantity: quantities[index],
-        url: urls[index],
-        color: colors[index],
-        size: sizes[index],
+        image: images.hasIndex(index) ? images[index] : '',
+        price: prices.hasIndex(index) ? prices[index] : '',
+        quantity: quantities.hasIndex(index) ? quantities[index] : '',
+        url: urls.hasIndex(index) ? urls[index] : '',
+        color: colors.hasIndex(index) ? colors[index] : '',
+        size: sizes.hasIndex(index) ? sizes[index] : '',
       ),
     );
 
     return products;
   }
+}
+
+extension ListHasIndex on List {
+  bool hasIndex(int index) => asMap().containsKey(index);
 }

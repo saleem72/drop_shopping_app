@@ -1,12 +1,77 @@
 //
 
 import 'package:drop_shopping_app/core/domain/models/shopping_website.dart';
-import 'package:drop_shopping_app/core/domain/models/shopping_website_vendor.dart';
 
 class DataProvider {
   DataProvider._internal();
 
   static final List<ShoppingWebsite?> websites = [
+    //
+    // - H&M
+    ShoppingWebsite.fromJson(const {
+      "id": 1,
+      "name": "H&M",
+      "url": "https://www.zara.com/uk/",
+      "image":
+          "https://api.weorder.app/assets/uploads/media-uploader/1696756911668.jpeg",
+      "is_free": 1,
+      "status": 1,
+      "vendor": "hm",
+      "script": '''
+
+function getQuantities() {
+  return Array.from(document.querySelectorAll("div.shop-cart-item__details > div.shop-cart-item__secondary-actions > div > div")).map((x) => x.textContent);
+}
+
+function getImages() {
+  return Array.from(document.querySelectorAll("div.shop-cart-item__image-container > a > div > div > div > img")).map((x) => x.src);
+}
+
+function getTitles() {
+  return Array.from(document.querySelectorAll("div.shop-cart-item__details > div.shop-cart-item__details-container > div.shop-cart-item__info > div.shop-cart-item-header > a > div")).map((x) => x.textContent);
+}
+
+function getPrices() {
+  return Array.from(document.querySelectorAll("div.shop-cart-item__details > div.shop-cart-item__details-container > div.shop-cart-item__info > div.shop-cart-item-pricing__container > div > div > div > span")).map((x) => x.textContent);
+}
+
+function getUrls() {
+  return Array.from(document.querySelectorAll("div.shop-cart-item__image-container > a")).map((x) => x.href);
+}
+
+function getColors() {
+  return Array.from(document.querySelectorAll("div.shop-cart-item__details > div.shop-cart-item__details-container > div.shop-cart-item__info > div.shop-cart-item-details-base > span.shop-cart-item-details-base__color")).map((x) => x.textContent);
+}
+
+function getSizes() {
+  return Array.from(document.querySelectorAll("div.shop-cart-item__details > div.shop-cart-item__details-container > div.shop-cart-item__info > div.shop-cart-item-details-base > span.shop-cart-item-details-base__size")).map((x) => x.textContent);
+}
+
+function toObject(){
+
+    var dict = {
+        titles: [],
+        images: [],
+        prices: [],
+        urls: [],
+        colors: [],
+        sizes: [],
+        quantities: []
+    };
+
+    dict.titles.push.apply(dict.titles, getTitles());
+    dict.images.push.apply(dict.images, getImages());
+    dict.prices.push.apply(dict.prices, getPrices());
+    dict.urls.push.apply(dict.urls, getUrls());
+    dict.colors.push.apply(dict.colors, getColors());
+    dict.sizes.push.apply(dict.sizes, getSizes());
+    dict.quantities.push.apply(dict.quantities, getQuantities());
+    return dict;
+
+}
+toObject();
+''',
+    }),
     // - H&M
     ShoppingWebsite.fromJson(const {
       "id": 1,
@@ -401,27 +466,192 @@ toObject();
       "image": "https://s3.we-order.com/recourses/images/1696756911668.jpeg",
       "is_free": 1,
       "status": 1,
-      "vendor": "She-in"
+      "vendor": "She-in",
+      "script": '''
+
+function getTitles() {
+  return Array.from(document.querySelectorAll("div.cart-item-content > div.m-cart__list-inner > div.mcart-right > div > div:nth-child(1) > div.right-struct > span")).map((x)=>x.textContent);
+}
+
+function getQuantities() {
+  return Array.from(document.querySelectorAll("div.cart-item-content > div.m-cart__list-inner > div.mcart-right > div > div.cart-item__operation > div > div > div > div.top > div.right > div > div > input")).map((x)=>x.value);
+}
+
+function getImages() {
+  return Array.from(document.querySelectorAll("div.cart-item-content > div.m-cart__list-inner > div.mcart-left > a > img")).map((x)=>x.src);
+}
+
+function getPrices() {
+  return Array.from(document.querySelectorAll("div.cart-item-content > div.m-cart__list-inner > div.mcart-right > div > div.cart-item__operation > div > div > div > div.top > div.left > div > span")).map((x)=>x.textContent);
+}
+
+function getUrls() {
+  return Array.from(document.querySelectorAll("div.cart-item-content > div.m-cart__list-inner > div.mcart-left > a > img")).map((x)=>x.src);
+}
+
+function getColors() {
+  return Array.from(document.querySelectorAll("div.cart-item-content > div.m-cart__list-inner > div.mcart-right > div > div:nth-child(1) > div.product-attr-ope > section > div > div > div > span")).map((x)=>x.textContent.trim().split("/")[0].trim());
+}
+
+function getSizes() {
+  return Array.from(document.querySelectorAll("div.cart-item-content > div.m-cart__list-inner > div.mcart-right > div > div:nth-child(1) > div.product-attr-ope > section > div > div > div > span")).map((x)=>x.textContent.trim().split("/")[1].trim());
+}
+
+function toObject(){
+
+    var dict = {
+        titles: [],
+        images: [],
+        prices: [],
+        urls: [],
+        colors: [],
+        sizes: [],
+        quantities: []
+    };
+
+    dict.titles.push.apply(dict.titles, getTitles());
+    dict.images.push.apply(dict.images, getImages());
+    dict.prices.push.apply(dict.prices, getPrices());
+    dict.urls.push.apply(dict.urls, getUrls());
+    dict.colors.push.apply(dict.colors, getColors());
+    dict.sizes.push.apply(dict.sizes, getSizes());
+    dict.quantities.push.apply(dict.quantities, getQuantities());
+    return dict;
+
+}
+toObject();
+'''
     }),
     // -
     ShoppingWebsite.fromJson(const {
       "id": 6,
       "name": "Amazon",
-      "url": "https://www.amazon.co.uk/",
+      "url": "https://www.amazon.com/",
       "image":
           "https://api.weorder.app/assets/uploads/media-uploader/1684845789875.png",
       "is_free": 1,
       "status": 1,
-      "vendor": "amazon"
+      "vendor": "amazon",
+      "script": '''
+
+function getTitles() {
+  return Array.from(document.querySelectorAll("div.sc-list-item-content > div.sc-item-dp-link > div > div > div > span")).map((x)=>x.textContent.trim());
+}
+
+function getQuantities() {
+  return Array.from(document.querySelectorAll(".sc-quantity-label > span")).map((x) => x.textContent.trim());
+}
+
+function getImages() {
+  return Array.from(document.querySelectorAll("div.sc-list-item-content > div.sc-item-dp-link > div > div > div > img")).map((x)=>x.src);
+}
+
+function getPrices() {
+  return Array.from(document.querySelectorAll(".a-row.a-spacing-mini.a-spacing-top-mini")).map((x) => Array.from(x.querySelectorAll(".sc-badge-price > .sc-badge-price-to-pay"))).flat(1).map((x) => Array.from(x.querySelectorAll("span[aria-hidden='true']"))).flat(1).map((x) => x.textContent.trim());
+}
+
+function getUrls() {
+  return Array.from(document.querySelectorAll(".sc-item-dp-link")).map((x) => 'https://www.amazon.com' + x.attributes['data-url'].textContent);
+}
+
+function getColors() {
+  return Array.from(document.querySelectorAll(".sc-product-variation > span.a-list-item")).map((x) => x.childNodes[1].textContent.includes('Color') ? x.childNodes[3].textContent.trim() : null).filter(function (el) { return el != null;});
+}
+
+function getSizes() {
+  return Array.from(document.querySelectorAll(".sc-product-variation > span.a-list-item")).map((x) => x.childNodes[1].textContent.includes('Size') ? x.childNodes[3].textContent.trim() : null).filter(function (el) { return el != null;});
+}
+
+function toObject(){
+
+    var dict = {
+        titles: [],
+        images: [],
+        prices: [],
+        urls: [],
+        colors: [],
+        sizes: [],
+        quantities: []
+    };
+
+    dict.titles.push.apply(dict.titles, getTitles());
+    dict.images.push.apply(dict.images, getImages());
+    dict.prices.push.apply(dict.prices, getPrices());
+    dict.urls.push.apply(dict.urls, getUrls());
+    dict.colors.push.apply(dict.colors, getColors());
+    dict.sizes.push.apply(dict.sizes, getSizes());
+    dict.quantities.push.apply(dict.quantities, getQuantities());
+    return dict;
+
+}
+toObject();
+'''
     }),
-    const ShoppingWebsite(
-      id: 7,
-      name: '',
-      url: 'https://www.dofactory.com/html/select/hidden',
-      image: '',
-      vendor: ShoppingWebsiteVendor.adidas,
-      keys: [],
-    ),
+    // -Sephora
+    ShoppingWebsite.fromJson(const {
+      "id": 1,
+      "name": "Sephora",
+      "url": "https://www.sephora.co.uk/",
+      "image":
+          "https://api.weorder.app/assets/uploads/media-uploader/1696756911668.jpeg",
+      "is_free": 1,
+      "status": 1,
+      "vendor": "hm",
+      "script": '''
+
+function getQuantities() {
+  return Array.from(document.querySelectorAll("div > div > div.bagItem-utils.h-display-ib.h-valign-t.h-align-r > div > select")).map((x)=>x.value);
+}
+
+function getImages() {
+  return Array.from(document.querySelectorAll("div > a > img")).map((x) => x.src);
+}
+
+function getTitles() {
+  return Array.from(document.querySelectorAll("div > div > div.basket-product-title-container > a.product-title > span")).map((x) => x.textContent.trim());
+}
+
+function getPrices() {
+  return Array.from(document.querySelectorAll("div > div > div.bagItem-utils.h-display-ib.h-valign-t.h-align-r > p > b")).map((x) => x.textContent.trim());
+}
+
+function getUrls() {
+  return Array.from(document.dyQuerySelectorAll("div.bagItem-summary > a")).map((x) => x.href);
+}
+
+function getColors() {
+  return [];
+}
+
+function getSizes() {
+  return [];
+}
+
+function toObject(){
+
+    var dict = {
+        titles: [],
+        images: [],
+        prices: [],
+        urls: [],
+        colors: [],
+        sizes: [],
+        quantities: []
+    };
+
+    dict.titles.push.apply(dict.titles, getTitles());
+    dict.images.push.apply(dict.images, getImages());
+    dict.prices.push.apply(dict.prices, getPrices());
+    dict.urls.push.apply(dict.urls, getUrls());
+    dict.colors.push.apply(dict.colors, getColors());
+    dict.sizes.push.apply(dict.sizes, getSizes());
+    dict.quantities.push.apply(dict.quantities, getQuantities());
+    return dict;
+
+}
+toObject();
+''',
+    }),
   ];
 
   ShoppingWebsiteScript script() => ShoppingWebsiteScriptDTO.fromMap({
