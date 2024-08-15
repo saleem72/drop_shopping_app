@@ -1,673 +1,98 @@
 //
 
 import 'package:drop_shopping_app/core/domain/models/shopping_website.dart';
+import 'package:drop_shopping_app/core/domain/models/shopping_website_vendor.dart';
 
 class DataProvider {
   DataProvider._internal();
 
   static final List<ShoppingWebsite?> websites = [
-    //
-    // - H&M
-    ShoppingWebsite.fromJson(const {
-      "id": 1,
-      "name": "H&M",
-      "url": "https://www.zara.com/uk/",
-      "image":
+    // - Zara
+    const ShoppingWebsite(
+      id: 1,
+      name: "Zara",
+      url: "https://www.zara.com/uk/",
+      image:
           "https://api.weorder.app/assets/uploads/media-uploader/1696756911668.jpeg",
-      "is_free": 1,
-      "status": 1,
-      "vendor": "hm",
-      "script": '''
+      vendor: ShoppingWebsiteVendor.zara,
+      keys: [],
+    ),
 
-function getQuantities() {
-  return Array.from(document.querySelectorAll("div.shop-cart-item__details > div.shop-cart-item__secondary-actions > div > div")).map((x) => x.textContent);
-}
-
-function getImages() {
-  return Array.from(document.querySelectorAll("div.shop-cart-item__image-container > a > div > div > div > img")).map((x) => x.src);
-}
-
-function getTitles() {
-  return Array.from(document.querySelectorAll("div.shop-cart-item__details > div.shop-cart-item__details-container > div.shop-cart-item__info > div.shop-cart-item-header > a > div")).map((x) => x.textContent);
-}
-
-function getPrices() {
-  return Array.from(document.querySelectorAll("div.shop-cart-item__details > div.shop-cart-item__details-container > div.shop-cart-item__info > div.shop-cart-item-pricing__container > div > div > div > span")).map((x) => x.textContent);
-}
-
-function getUrls() {
-  return Array.from(document.querySelectorAll("div.shop-cart-item__image-container > a")).map((x) => x.href);
-}
-
-function getColors() {
-  return Array.from(document.querySelectorAll("div.shop-cart-item__details > div.shop-cart-item__details-container > div.shop-cart-item__info > div.shop-cart-item-details-base > span.shop-cart-item-details-base__color")).map((x) => x.textContent);
-}
-
-function getSizes() {
-  return Array.from(document.querySelectorAll("div.shop-cart-item__details > div.shop-cart-item__details-container > div.shop-cart-item__info > div.shop-cart-item-details-base > span.shop-cart-item-details-base__size")).map((x) => x.textContent);
-}
-
-function toObject(){
-
-    var dict = {
-        titles: [],
-        images: [],
-        prices: [],
-        urls: [],
-        colors: [],
-        sizes: [],
-        quantities: []
-    };
-
-    dict.titles.push.apply(dict.titles, getTitles());
-    dict.images.push.apply(dict.images, getImages());
-    dict.prices.push.apply(dict.prices, getPrices());
-    dict.urls.push.apply(dict.urls, getUrls());
-    dict.colors.push.apply(dict.colors, getColors());
-    dict.sizes.push.apply(dict.sizes, getSizes());
-    dict.quantities.push.apply(dict.quantities, getQuantities());
-    return dict;
-
-}
-toObject();
-''',
-    }),
     // - H&M
-    ShoppingWebsite.fromJson(const {
-      "id": 1,
-      "name": "H&M",
-      "url": "https://www2.hm.com/en_gb/index.html",
-      "image": "https://s3.we-order.com/recourses/images/1696756504591.jpeg",
-      "is_free": 1,
-      "status": 1,
-      "vendor": "hm",
-      "keys": [
-        {
-          "title": 'url',
-          "key": 'article > div.CartItem-module--details__3xy60 > a',
-          "attribute": 'href',
-          "prefix": 'https://www2.hm.com'
-        },
-        {
-          "title": 'image',
-          "key": 'article > a > div > img',
-          "attribute": 'src'
-        },
-        {
-          "title": 'title',
-          "key": 'article > div.CartItem-module--details__3xy60 > a > h2',
-          "attribute": null
-        },
-        {
-          "title": 'price',
-          "key": 'article > div.CartItem-module--details__3xy60 > span',
-          "attribute": null
-        },
-        {
-          "title": 'color',
-          "key":
-              'article > div.CartItem-module--details__3xy60 > ul > li:nth-child(1) > span.d1cd7b.b7f566.CartItemDetails-module--value__AcUPn',
-          "attribute": null
-        },
-        {
-          "title": 'size',
-          "key":
-              'article > div.CartItem-module--details__3xy60 > ul > li:nth-child(2) > span.d1cd7b.b7f566.CartItemDetails-module--value__AcUPn',
-          "attribute": null
-        },
-        {
-          "title": 'quantity',
-          "key":
-              'article > div.Actions-module--actions__24Z1Z > div > div > div > select',
-          "attribute": null
-        },
-      ],
-      "script": '''
+    const ShoppingWebsite(
+      id: 2,
+      name: "H&M",
+      //    https://www2.hm.com/en_gb/index.html
+      url: "https://www2.hm.com/en_gb/index.html",
+      image: "https://s3.we-order.com/recourses/images/1696756504591.jpeg",
+      vendor: ShoppingWebsiteVendor.hm,
+      keys: [],
+    ),
 
-function getQuantities() {
-  return Array.from(document.querySelectorAll("article > div.Actions-module--actions__24Z1Z > div > div > div > select")).map((x) => x.value);
-}
-
-function getImages() {
-  return Array.from(document.querySelectorAll("article > a > div > img")).map((x)=>x.src);
-}
-
-function getTitles() {
-  return Array.from(document.querySelectorAll("article > div.CartItem-module--details__3xy60 > a > h2")).map((x)=>x.textContent);
-}
-
-function getPrices() {
-  return Array.from(document.querySelectorAll("article > div.CartItem-module--details__3xy60 > span")).map((x)=>x.textContent);
-}
-
-function getUrls() {
-  return Array.from(document.querySelectorAll("article > div.CartItem-module--details__3xy60 > a")).map((x)=>x.href);
-}
-
-function getColors() {
-  return Array.from(document.querySelectorAll("#sidebar-sticky-boundary > section.CartItemsList--wrapper__2s_UW > div > ul > li > article > div.CartItem-module--details__3xy60 > ul > li:nth-child(2) > span.d1cd7b.b7f566.CartItemDetails-module--value__AcUPn")).map((x)=> x.childNodes[0].textContent);
-}
-
-function getSizes() {
-  return Array.from(document.querySelectorAll("#sidebar-sticky-boundary > section.CartItemsList--wrapper__2s_UW > div > ul > li > article > div.CartItem-module--details__3xy60 > ul > li:nth-child(3) > span.d1cd7b.b7f566.CartItemDetails-module--value__AcUPn")).map((x)=> x.childNodes[0].textContent);
-}
-
-function toObject(){
-
-    var dict = {
-        titles: [],
-        images: [],
-        prices: [],
-        urls: [],
-        colors: [],
-        sizes: [],
-        quantities: []
-    };
-
-    dict.titles.push.apply(dict.titles, getTitles());
-    dict.images.push.apply(dict.images, getImages());
-    dict.prices.push.apply(dict.prices, getPrices());
-    dict.urls.push.apply(dict.urls, getUrls());
-    dict.colors.push.apply(dict.colors, getColors());
-    dict.sizes.push.apply(dict.sizes, getSizes());
-    dict.quantities.push.apply(dict.quantities, getQuantities());
-    return dict;
-
-}
-toObject();
-''',
-    }),
     // - adidas
-    ShoppingWebsite.fromJson(const {
-      "id": 2,
-      "name": "adidas",
-      "url": "https://www.adidas.co.uk/",
-      "image":
+    const ShoppingWebsite(
+      id: 3,
+      name: "adidas",
+      url: "https://www.adidas.co.uk/",
+      image:
           "https://api.weorder.app/assets/uploads/media-uploader/1696757373709.jpeg",
-      "is_free": 1,
-      "status": 1,
-      "vendor": "adidas",
-      "keys": [
-        {
-          "title": 'url',
-          "key":
-              'div.no-gutters.col-s-5.line-item__image-sizing-wrapper___a91cW > a',
-          "attribute": 'href',
-          "prefix": 'https://www.adidas.com/'
-        },
-        {
-          "title": 'image',
-          "key":
-              'div.no-gutters.col-s-5.line-item__image-sizing-wrapper___a91cW > a > img',
-          "attribute": 'src'
-        },
-        {
-          "title": 'title',
-          "key": 'div.line-item__details___HibzD > div > div > div > a > span',
-          "attribute": null
-        },
-        {
-          "title": 'price',
-          "key":
-              'div.line-item__footer___UcQo4.row.gl-align-items-center > div.gl-hidden-m > div > div',
-          "attribute": null
-        },
-        {
-          "title": 'color',
-          "key": 'div.line-item__details___HibzD > div > div > div > span',
-          "attribute": null
-        },
-        {
-          "title": 'size',
-          "key":
-              'div.line-item__details-row___hV7vL.row > div.line-item__details___HibzD > div > div > div > div.line-item__attribute___NdmJb > span',
-          "attribute": null,
-          "innerChild": {
-            "className": 'data-auto-id',
-            "classValue": 'cart-line-item-attribute-size'
-          }
-        },
-      ],
-      "script": '''
+      vendor: ShoppingWebsiteVendor.adidas,
+      keys: [],
+    ),
 
-function getTitles() {
-  return Array.from(document.querySelectorAll("div > div.line-item___i5rwj.line-item__border-redesign___cp6Bq > div.line-item__details-wrapper___hdXUf.col-s-7.col-m-7.col-l-12.offset-l-1.no-gutters > div.line-item__details-row___hV7vL.row > div.line-item__details___HibzD > div > div:nth-child(1) > div > a > span")).map((x)=> x.textContent);
-}
-
-function getQuantities() {
-  return Array.from(document.querySelectorAll("div > div.line-item__details-wrapper___hdXUf.col-s-7.col-m-7.col-l-12.offset-l-1.no-gutters > div.line-item__footer___UcQo4.row.gl-align-items-center > div.dropdown-container___mjvVf > div > div > select")).map((x)=>x.value);
-}
-
-function getImages() {
-  return Array.from(document.querySelectorAll("div > div > div.no-gutters.col-s-5.line-item__image-sizing-wrapper___a91cW > a > img")).map((x)=>x.src);
-}
-
-function getPrices() {
-  return Array.from(document.querySelectorAll("div > div.line-item__details-wrapper___hdXUf.col-s-7.col-m-7.col-l-12.offset-l-1.no-gutters > div.line-item__footer___UcQo4.row.gl-align-items-center > div.gl-hidden-m > div > div")).map((x)=>x.textContent);
-}
-
-function getUrls() {
-  return Array.from(document.querySelectorAll("div > div > div.no-gutters.col-s-5.line-item__image-sizing-wrapper___a91cW > a")).map((x)=>x.href);
-}
-
-function getColors() {
-  return Array.from(document.querySelectorAll("div > div.line-item__details-wrapper___hdXUf.col-s-7.col-m-7.col-l-12.offset-l-1.no-gutters > div.line-item__details-row___hV7vL.row > div.line-item__details___HibzD > div > div:nth-child(2) > div > span")).map((x)=>x.textContent);
-}
-
-function getSizes() {
-  return Array.from(document.querySelectorAll("div > div.line-item__details-wrapper___hdXUf.col-s-7.col-m-7.col-l-12.offset-l-1.no-gutters > div.line-item__details-row___hV7vL.row > div.line-item__details___HibzD > div > div.gl-vspace > div > div > span:nth-child(2)")).map((x)=>x.textContent);
-}
-
-function toObject(){
-
-    var dict = {
-        titles: [],
-        images: [],
-        prices: [],
-        urls: [],
-        colors: [],
-        sizes: [],
-        quantities: []
-    };
-
-    dict.titles.push.apply(dict.titles, getTitles());
-    dict.images.push.apply(dict.images, getImages());
-    dict.prices.push.apply(dict.prices, getPrices());
-    dict.urls.push.apply(dict.urls, getUrls());
-    dict.colors.push.apply(dict.colors, getColors());
-    dict.sizes.push.apply(dict.sizes, getSizes());
-    dict.quantities.push.apply(dict.quantities, getQuantities());
-    return dict;
-
-}
-toObject();
-'''
-    }),
     // - Puma
-    ShoppingWebsite.fromJson(const {
-      "id": 3,
-      "name": "puma",
-      "url": "https://uk.puma.com/uk/en",
-      "image":
+    const ShoppingWebsite(
+      id: 4,
+      name: "Puma",
+      url: "https://uk.puma.com/uk/en",
+      image:
           "https://api.weorder.app/assets/uploads/media-uploader/1696772691443.jpeg",
-      "is_free": 1,
-      "status": 1,
-      "vendor": "puma",
-      "keys": [
-        {
-          "title": 'url',
-          "key": 'ol > li > div > div > div > div > div > a',
-          "attribute": 'href',
-          "prefix": 'https://uk.puma.com',
-        },
-        {
-          "title": 'image',
-          "key": 'div > div > div > div > div > a > div > img',
-          "attribute": 'src',
-        },
-        {
-          "title": 'title',
-          "key": 'div > div > div > div > div > div > div.space-y-3 > a > h3',
-          "attribute": null,
-        },
-        {
-          "title": 'price',
-          "key": 'div > div > div > div > div > div > div > p > span',
-          "attribute": null,
-          "innerChild": {
-            "className": "data-test-id",
-            "classValue": "item-price",
-          }
-        },
-        {
-          "title": 'color',
-          "key": 'div.space-y-3 > div > div > p > span',
-          "attribute": null,
-          "innerChild": {
-            "className": "data-test-id",
-            "classValue": "color",
-          },
-        },
-        {
-          "title": 'size',
-          "key": 'div.space-y-3 > div > div > p > span',
-          "attribute": null,
-          "innerChild": {
-            "className": "data-test-id",
-            "classValue": "size",
-          },
-        },
-      ],
-      "script": '''
+      vendor: ShoppingWebsiteVendor.puma,
+      keys: [],
+    ),
 
-function getTitles() {
-  return Array.from(document.dyQuerySelectorAll("div > div > div > div > div > div > div.space-y-3 > a > h3")).map((x)=>x.textContent);
-}
-
-function getQuantities() {
-  return Array.from(document.querySelectorAll("div > div > div > div > div > div > div.space-y-3 > div > div.flex.w-24 > div > div > select")).map((x)=>x.value);
-}
-
-function getImages() {
-  return Array.from(document.querySelectorAll("div > div > div > div > div > a > div > img")).map((x)=>x.src);
-}
-
-function getPrices() {
-  return Array.from(document.querySelectorAll("div > div > div > div > div > div > div > p > span[data-test-id='item-price']")).map((x)=>x.textContent);
-}
-
-function getUrls() {
-  return Array.from(document.querySelectorAll("div > div > div > div > div > a[data-test-id='cart-item-img-link']")).map((x)=>x.href);
-}
-
-function getColors() {
-  return Array.from(document.querySelectorAll("div > div > div > div > div > div > div > p > span[data-test-id='color']")).map((x)=>x.textContent);
-}
-
-function getSizes() {
-  return Array.from(document.querySelectorAll("div > div > div > div > div > div > div > p > span[data-test-id='size']")).map((x)=>x.textContent);
-}
-
-function toObject(){
-
-    var dict = {
-        titles: [],
-        images: [],
-        prices: [],
-        urls: [],
-        colors: [],
-        sizes: [],
-        quantities: []
-    };
-
-    dict.titles.push.apply(dict.titles, getTitles());
-    dict.images.push.apply(dict.images, getImages());
-    dict.prices.push.apply(dict.prices, getPrices());
-    dict.urls.push.apply(dict.urls, getUrls());
-    dict.colors.push.apply(dict.colors, getColors());
-    dict.sizes.push.apply(dict.sizes, getSizes());
-    dict.quantities.push.apply(dict.quantities, getQuantities());
-    return dict;
-
-}
-toObject();
-'''
-    }),
     // - Nike
-    ShoppingWebsite.fromJson(const {
-      "id": 4,
-      "name": "nike",
-      "url": "https://www.nike.com/",
-      "image":
+    const ShoppingWebsite(
+      id: 5,
+      name: "Nike",
+      url: "https://www.nike.com/",
+      image:
           "https://api.weorder.app/assets/uploads/media-uploader/1702556484833.jpeg",
-      "is_free": 1,
-      "status": 1,
-      "vendor": "nike",
-      "script": '''
+      vendor: ShoppingWebsiteVendor.nike,
+      keys: [],
+    ),
 
-function getTitles() {
-  return Array.from(document.querySelectorAll("div.css-k008qs.ei1batk0 > div > div.css-18o14p5.ezci20q3 > div.css-1u52liu.ezci20q1 > a > h2")).map((x)=>x.textContent);
-}
-
-function getQuantities() {
-  return Array.from(document.querySelectorAll("div.css-k008qs.ei1batk0 > div > div.css-18o14p5.ezci20q3 > div.css-1u52liu.ezci20q1 > div.css-3x77rp.eyas8011 > div:nth-child(2) > div > select")).map((x)=>x.value);
-}
-
-function getImages() {
-  return Array.from(document.querySelectorAll("div.css-k008qs.ei1batk0 > figure > a > picture > img")).map((x)=>x.src);
-}
-
-function getPrices() {
-  return Array.from(document.querySelectorAll("div.css-k008qs.ei1batk0 > div > div.css-18o14p5.ezci20q3 > div.css-q2xuk9.ezci20q0 > p > span > span > span")).map((x)=>x.childNodes[1].textContent);
-}
-
-function getUrls() {
-  return Array.from(document.querySelectorAll("div.css-k008qs.ei1batk0 > figure > a")).map((x)=>x.href);
-}
-
-function getColors() {
-  return Array.from(document.querySelectorAll("div.css-k008qs.ei1batk0 > div > div.css-18o14p5.ezci20q3 > div.css-1u52liu.ezci20q1 > div.css-1f31asj.eneqjw10")).map((x)=>x.textContent);
-}
-
-function getSizes() {
-  return Array.from(document.querySelectorAll("div.css-k008qs.ei1batk0 > div > div.css-18o14p5.ezci20q3 > div.css-1u52liu.ezci20q1 > div.css-3x77rp.eyas8011 > div:nth-child(1) > div > select")).map((x)=>x.options[x.selectedIndex].text);
-}
-
-function toObject(){
-
-    var dict = {
-        titles: [],
-        images: [],
-        prices: [],
-        urls: [],
-        colors: [],
-        sizes: [],
-        quantities: []
-    };
-
-    dict.titles.push.apply(dict.titles, getTitles());
-    dict.images.push.apply(dict.images, getImages());
-    dict.prices.push.apply(dict.prices, getPrices());
-    dict.urls.push.apply(dict.urls, getUrls());
-    dict.colors.push.apply(dict.colors, getColors());
-    dict.sizes.push.apply(dict.sizes, getSizes());
-    dict.quantities.push.apply(dict.quantities, getQuantities());
-    return dict;
-
-}
-toObject();
-'''
-    }),
     // - She-in
-    ShoppingWebsite.fromJson(const {
-      "id": 5,
-      "name": "She-in",
-      "url": "https://www.shein.com/Home",
-      "image": "https://s3.we-order.com/recourses/images/1696756911668.jpeg",
-      "is_free": 1,
-      "status": 1,
-      "vendor": "She-in",
-      "script": '''
+    const ShoppingWebsite(
+      id: 6,
+      name: "She-in",
+      url: "https://www.shein.com/Home",
+      image:
+          "https://logos-world.net/wp-content/uploads/2023/02/Shein-Logo.png",
+      vendor: ShoppingWebsiteVendor.sheIn,
+      keys: [],
+    ),
 
-function getTitles() {
-  return Array.from(document.querySelectorAll("div.cart-item-content > div.m-cart__list-inner > div.mcart-right > div > div:nth-child(1) > div.right-struct > span")).map((x)=>x.textContent);
-}
-
-function getQuantities() {
-  return Array.from(document.querySelectorAll("div.cart-item-content > div.m-cart__list-inner > div.mcart-right > div > div.cart-item__operation > div > div > div > div.top > div.right > div > div > input")).map((x)=>x.value);
-}
-
-function getImages() {
-  return Array.from(document.querySelectorAll("div.cart-item-content > div.m-cart__list-inner > div.mcart-left > a > img")).map((x)=>x.src);
-}
-
-function getPrices() {
-  return Array.from(document.querySelectorAll("div.cart-item-content > div.m-cart__list-inner > div.mcart-right > div > div.cart-item__operation > div > div > div > div.top > div.left > div > span")).map((x)=>x.textContent);
-}
-
-function getUrls() {
-  return Array.from(document.querySelectorAll("div.cart-item-content > div.m-cart__list-inner > div.mcart-left > a > img")).map((x)=>x.src);
-}
-
-function getColors() {
-  return Array.from(document.querySelectorAll("div.cart-item-content > div.m-cart__list-inner > div.mcart-right > div > div:nth-child(1) > div.product-attr-ope > section > div > div > div > span")).map((x)=>x.textContent.trim().split("/")[0].trim());
-}
-
-function getSizes() {
-  return Array.from(document.querySelectorAll("div.cart-item-content > div.m-cart__list-inner > div.mcart-right > div > div:nth-child(1) > div.product-attr-ope > section > div > div > div > span")).map((x)=>x.textContent.trim().split("/")[1].trim());
-}
-
-function toObject(){
-
-    var dict = {
-        titles: [],
-        images: [],
-        prices: [],
-        urls: [],
-        colors: [],
-        sizes: [],
-        quantities: []
-    };
-
-    dict.titles.push.apply(dict.titles, getTitles());
-    dict.images.push.apply(dict.images, getImages());
-    dict.prices.push.apply(dict.prices, getPrices());
-    dict.urls.push.apply(dict.urls, getUrls());
-    dict.colors.push.apply(dict.colors, getColors());
-    dict.sizes.push.apply(dict.sizes, getSizes());
-    dict.quantities.push.apply(dict.quantities, getQuantities());
-    return dict;
-
-}
-toObject();
-'''
-    }),
-    // -
-    ShoppingWebsite.fromJson(const {
-      "id": 6,
-      "name": "Amazon",
-      "url": "https://www.amazon.com/",
-      "image":
+    // -Amazon
+    const ShoppingWebsite(
+      id: 7,
+      name: "Amazon",
+      url: "https://www.amazon.com/",
+      image:
           "https://api.weorder.app/assets/uploads/media-uploader/1684845789875.png",
-      "is_free": 1,
-      "status": 1,
-      "vendor": "amazon",
-      "script": '''
+      vendor: ShoppingWebsiteVendor.amazon,
+      keys: [],
+    ),
 
-function getTitles() {
-  return Array.from(document.querySelectorAll("div.sc-list-item-content > div.sc-item-dp-link > div > div > div > span")).map((x)=>x.textContent.trim());
-}
-
-function getQuantities() {
-  return Array.from(document.querySelectorAll(".sc-quantity-label > span")).map((x) => x.textContent.trim());
-}
-
-function getImages() {
-  return Array.from(document.querySelectorAll("div.sc-list-item-content > div.sc-item-dp-link > div > div > div > img")).map((x)=>x.src);
-}
-
-function getPrices() {
-  return Array.from(document.querySelectorAll(".a-row.a-spacing-mini.a-spacing-top-mini")).map((x) => Array.from(x.querySelectorAll(".sc-badge-price > .sc-badge-price-to-pay"))).flat(1).map((x) => Array.from(x.querySelectorAll("span[aria-hidden='true']"))).flat(1).map((x) => x.textContent.trim());
-}
-
-function getUrls() {
-  return Array.from(document.querySelectorAll(".sc-item-dp-link")).map((x) => 'https://www.amazon.com' + x.attributes['data-url'].textContent);
-}
-
-function getColors() {
-  return Array.from(document.querySelectorAll(".sc-product-variation > span.a-list-item")).map((x) => x.childNodes[1].textContent.includes('Color') ? x.childNodes[3].textContent.trim() : null).filter(function (el) { return el != null;});
-}
-
-function getSizes() {
-  return Array.from(document.querySelectorAll(".sc-product-variation > span.a-list-item")).map((x) => x.childNodes[1].textContent.includes('Size') ? x.childNodes[3].textContent.trim() : null).filter(function (el) { return el != null;});
-}
-
-function toObject(){
-
-    var dict = {
-        titles: [],
-        images: [],
-        prices: [],
-        urls: [],
-        colors: [],
-        sizes: [],
-        quantities: []
-    };
-
-    dict.titles.push.apply(dict.titles, getTitles());
-    dict.images.push.apply(dict.images, getImages());
-    dict.prices.push.apply(dict.prices, getPrices());
-    dict.urls.push.apply(dict.urls, getUrls());
-    dict.colors.push.apply(dict.colors, getColors());
-    dict.sizes.push.apply(dict.sizes, getSizes());
-    dict.quantities.push.apply(dict.quantities, getQuantities());
-    return dict;
-
-}
-toObject();
-'''
-    }),
     // -Sephora
-    ShoppingWebsite.fromJson(const {
-      "id": 1,
-      "name": "Sephora",
-      "url": "https://www.sephora.co.uk/",
-      "image":
-          "https://api.weorder.app/assets/uploads/media-uploader/1696756911668.jpeg",
-      "is_free": 1,
-      "status": 1,
-      "vendor": "hm",
-      "script": '''
-
-function getQuantities() {
-  return Array.from(document.querySelectorAll("div > div > div.bagItem-utils.h-display-ib.h-valign-t.h-align-r > div > select")).map((x)=>x.value);
-}
-
-function getImages() {
-  return Array.from(document.querySelectorAll("div > a > img")).map((x) => x.src);
-}
-
-function getTitles() {
-  return Array.from(document.querySelectorAll("div > div > div.basket-product-title-container > a.product-title > span")).map((x) => x.textContent.trim());
-}
-
-function getPrices() {
-  return Array.from(document.querySelectorAll("div > div > div.bagItem-utils.h-display-ib.h-valign-t.h-align-r > p > b")).map((x) => x.textContent.trim());
-}
-
-function getUrls() {
-  return Array.from(document.dyQuerySelectorAll("div.bagItem-summary > a")).map((x) => x.href);
-}
-
-function getColors() {
-  return [];
-}
-
-function getSizes() {
-  return [];
-}
-
-function toObject(){
-
-    var dict = {
-        titles: [],
-        images: [],
-        prices: [],
-        urls: [],
-        colors: [],
-        sizes: [],
-        quantities: []
-    };
-
-    dict.titles.push.apply(dict.titles, getTitles());
-    dict.images.push.apply(dict.images, getImages());
-    dict.prices.push.apply(dict.prices, getPrices());
-    dict.urls.push.apply(dict.urls, getUrls());
-    dict.colors.push.apply(dict.colors, getColors());
-    dict.sizes.push.apply(dict.sizes, getSizes());
-    dict.quantities.push.apply(dict.quantities, getQuantities());
-    return dict;
-
-}
-toObject();
-''',
-    }),
+    const ShoppingWebsite(
+      id: 8,
+      name: "Sephora",
+      url: "https://www.sephora.co.uk/",
+      image:
+          "https://i.pinimg.com/736x/36/1e/1f/361e1f5468b3c7e28721bde481ed2ea7.jpg",
+      vendor: ShoppingWebsiteVendor.sephora,
+      keys: [],
+    ),
   ];
-
-  ShoppingWebsiteScript script() => ShoppingWebsiteScriptDTO.fromMap({
-        "titles":
-            'return Array.from(document.querySelectorAll("div > div.line-item___i5rwj.line-item__border-redesign___cp6Bq > div.line-item__details-wrapper___hdXUf.col-s-7.col-m-7.col-l-12.offset-l-1.no-gutters > div.line-item__details-row___hV7vL.row > div.line-item__details___HibzD > div > div:nth-child(1) > div > a > span")).map((x)=> x.textContent);',
-        "quantities":
-            'Array.from(document.querySelectorAll("div > div.line-item__details-wrapper___hdXUf.col-s-7.col-m-7.col-l-12.offset-l-1.no-gutters > div.line-item__footer___UcQo4.row.gl-align-items-center > div.dropdown-container___mjvVf > div > div > select")).map((x)=>x.value);',
-        "images":
-            'Array.from(document.querySelectorAll("div > div > div.no-gutters.col-s-5.line-item__image-sizing-wrapper___a91cW > a > img")).map((x)=>x.src);',
-        "prices":
-            'Array.from(document.querySelectorAll("div > div.line-item__details-wrapper___hdXUf.col-s-7.col-m-7.col-l-12.offset-l-1.no-gutters > div.line-item__footer___UcQo4.row.gl-align-items-center > div.gl-hidden-m > div > div")).map((x)=>x.textContent);',
-        "urls":
-            'Array.from(document.querySelectorAll("div > div > div.no-gutters.col-s-5.line-item__image-sizing-wrapper___a91cW > a")).map((x)=>x.href);',
-        "colors":
-            'Array.from(document.querySelectorAll("div > div.line-item__details-wrapper___hdXUf.col-s-7.col-m-7.col-l-12.offset-l-1.no-gutters > div.line-item__details-row___hV7vL.row > div.line-item__details___HibzD > div > div:nth-child(2) > div > span")).map((x)=>x.textContent);',
-        "sizes":
-            'Array.from(document.querySelectorAll("div > div.line-item__details-wrapper___hdXUf.col-s-7.col-m-7.col-l-12.offset-l-1.no-gutters > div.line-item__details-row___hV7vL.row > div.line-item__details___HibzD > div > div.gl-vspace > div > div > span:nth-child(2)")).map((x)=>x.textContent);'
-      }).toModel();
 }

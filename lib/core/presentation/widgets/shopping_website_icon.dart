@@ -1,6 +1,7 @@
 //
 
 import 'package:drop_shopping_app/core/domain/models/shopping_website.dart';
+import 'package:drop_shopping_app/core/styles/sizes.dart';
 import 'package:drop_shopping_app/features/app_web_view/app_web_view.dart';
 import 'package:flutter/material.dart';
 import 'package:my_core/my_core.dart';
@@ -25,7 +26,7 @@ class ShoppingWebsiteIcon extends StatelessWidget {
         width: size,
         decoration: BoxDecoration(
           color: AppColors.lightPink,
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(RadiusSizes.small),
         ),
         padding: const EdgeInsets.all(8),
         child: Center(

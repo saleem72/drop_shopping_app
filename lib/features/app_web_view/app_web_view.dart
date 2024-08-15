@@ -224,65 +224,62 @@ class _AppWebViewState extends State<AppWebView> {
       isLoading = true;
     });
 
-    const script = '''
+//     const script = '''
 
-function getQuantities() {
-  return [];
-}
+// function getQuantities() {
+//   return [];
+// }
 
-function getImages() {
-  return [];
-}
+// function getImages() {
+//   return [];
+// }
 
-function getTitles() {
-  return Array.from(document.querySelectorAll("div > div > div.basket-product-title-container > a.product-title > span")).map((x) => x.textContent.trim());
-}
+// function getTitles() {
+//   return Array.from(document.querySelectorAll("div > div > div.basket-product-title-container > a.product-title > span")).map((x) => x.textContent.trim());
+// }
 
-function getPrices() {
-  return Array.from(document.querySelectorAll("div > div > div.bagItem-utils.h-display-ib.h-valign-t.h-align-r > p > b")).map((x) => x.textContent.trim());
-}
+// function getPrices() {
+//   return Array.from(document.querySelectorAll("div > div > div.bagItem-utils.h-display-ib.h-valign-t.h-align-r > p > b")).map((x) => x.textContent.trim());
+// }
 
-function getUrls() {
-  return [];
-}
+// function getUrls() {
+//   return [];
+// }
 
-function getColors() {
-  return [];
-}
+// function getColors() {
+//   return [];
+// }
 
-function getSizes() {
-  return [];
-}
+// function getSizes() {
+//   return [];
+// }
 
-function toObject(){
+// function toObject(){
 
-    var dict = {
-        titles: [],
-        images: [],
-        prices: [],
-        urls: [],
-        colors: [],
-        sizes: [],
-        quantities: []
-    };
+//     var dict = {
+//         titles: [],
+//         images: [],
+//         prices: [],
+//         urls: [],
+//         colors: [],
+//         sizes: [],
+//         quantities: []
+//     };
 
-    dict.titles.push.apply(dict.titles, getTitles());
-    dict.images.push.apply(dict.images, getImages());
-    dict.prices.push.apply(dict.prices, getPrices());
-    dict.urls.push.apply(dict.urls, getUrls());
-    dict.colors.push.apply(dict.colors, getColors());
-    dict.sizes.push.apply(dict.sizes, getSizes());
-    dict.quantities.push.apply(dict.quantities, getQuantities());
-    return dict;
+//     dict.titles.push.apply(dict.titles, getTitles());
+//     dict.images.push.apply(dict.images, getImages());
+//     dict.prices.push.apply(dict.prices, getPrices());
+//     dict.urls.push.apply(dict.urls, getUrls());
+//     dict.colors.push.apply(dict.colors, getColors());
+//     dict.sizes.push.apply(dict.sizes, getSizes());
+//     dict.quantities.push.apply(dict.quantities, getQuantities());
+//     return dict;
 
-}
-toObject();
-''';
+// }
+// toObject();
+// ''';
 
-    // final script = widget.website.script;
-    // if (script == null) {
-    //   return;
-    // }
+    final script = widget.website.vendor.scriptHolder.script;
 
     try {
       final body =

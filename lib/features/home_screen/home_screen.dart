@@ -4,6 +4,7 @@ import 'package:drop_shopping_app/core/data/helpers/data_provider.dart';
 import 'package:drop_shopping_app/core/domain/models/shopping_website.dart';
 import 'package:drop_shopping_app/core/presentation/widgets/shopping_websites_section.dart';
 import 'package:flutter/material.dart';
+import 'package:my_core/my_core.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -12,7 +13,16 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home'),
+        iconTheme:
+            IconThemeData(color: Theme.of(context).colorScheme.secondary),
+        title: Text(
+          'Home',
+          style: context.textTheme.labelLarge?.copyWith(
+            color: context.colorScheme.primary,
+          ),
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
         // backgroundColor: context.,
       ),
       body: Column(
@@ -21,6 +31,20 @@ class HomeScreen extends StatelessWidget {
             child: ShoppingWebsitesSection(
               sites:
                   DataProvider.websites.whereType<ShoppingWebsite>().toList(),
+            ),
+          ),
+          Material(
+            elevation: 4,
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            child: Container(
+              padding: const EdgeInsets.all(16),
+              child: Container(
+                margin: EdgeInsets.all(32),
+                color: Colors.green,
+                height: 180,
+                width: 180,
+              ),
             ),
           ),
         ],

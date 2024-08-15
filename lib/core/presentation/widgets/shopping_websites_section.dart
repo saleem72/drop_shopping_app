@@ -1,6 +1,8 @@
 //
 
 import 'package:drop_shopping_app/core/domain/models/shopping_website.dart';
+import 'package:drop_shopping_app/core/styles/sizes.dart';
+import 'package:drop_shopping_app/core/styles/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:my_core/my_core.dart';
 
@@ -19,25 +21,25 @@ class ShoppingWebsitesSection extends StatelessWidget {
         ? Column(
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
+                padding: StylesEdgeInsets.mediumSymmetricHorizontal,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       'Shopping Websites',
-                      style: textTheme.titleMedium?.copyWith(fontSize: 16),
+                      style: textTheme.labelLarge,
                     ),
                   ],
                 ),
               ),
-              const SizedBox(height: 8),
+              StylesVGap.xSmall,
               Expanded(
                 child: GridView.builder(
                   padding: const EdgeInsets.all(16),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
-                    crossAxisSpacing: 16,
-                    mainAxisSpacing: 16,
+                    crossAxisSpacing: GapSizes.mediumGap,
+                    mainAxisSpacing: GapSizes.mediumGap,
                   ),
                   itemCount: sites.length,
                   itemBuilder: (BuildContext context, int index) {
