@@ -227,13 +227,19 @@ class _AppWebViewState extends State<AppWebView> {
 
     final scriptHolder = ScriptHolder(
       titles:
-          'Array.from(document.querySelectorAll("div > div > div > div > div.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-7.mui-style-1pastnp > div.top-body.MuiBox-root.mui-style-19idom > div > a")).map((x) => x.textContent);',
-      quantities: null,
-      images: null,
-      prices: null,
-      urls: null,
+          'Array.from(document.querySelectorAll("ul > li > div > div > div > div.listsummary-content > div > div.grid-item-information > div.grid-item-title > h3 > a")).map((x) => x.textContent.trim());',
+      // quantities:
+      //     'Array.from(document.querySelectorAll("ul > li > div > div > div > div.listsummary-content > div > div.grid-item-price-and-quantity > div > div.grid-item-quantity-lower > div > div > span > span > span:nth-child(2)")).map((x) => x.textContent.split(" ")[1]);',
+      images:
+          'Array.from(document.querySelectorAll("ul > li > div > div > div > div.listsummary-content > div > div.grid-item-image > div > div > img")).map((x) => x.src);',
+      // prices:
+      //     'Array.from(document.querySelectorAll("ul > li > div > div > div > div.listsummary-content > div > div.grid-item-price-and-quantity > div > div.grid-item-price > div > div > div > span > span > span")).map((x) => x.textContent);',
+      urls:
+          'Array.from(document.querySelectorAll("ul > li > div > div > div > div.listsummary-content > div > div.grid-item-information > div.grid-item-title > h3 > a")).map((x) => x.href);',
       colors: null,
       sizes: null,
+      prices: null,
+      quantities: null,
     );
 
     // final script = widget.website.vendor.scriptHolder.script;

@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 // import 'package:intl/intl.dart';
 // import 'package:my_core/extensions/string_extension.dart';
 import 'package:my_core/my_core.dart';
+import 'package:my_core/theming/styled.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ShoppingProductCard extends StatelessWidget {
@@ -33,19 +34,25 @@ class ShoppingProductCard extends StatelessWidget {
                 children: [
                   Container(
                     height: 120,
-                    width: 100,
+                    width: 120,
                     clipBehavior: Clip.hardEdge,
                     decoration: BoxDecoration(
-                        color: Colors.green,
-                        borderRadius: BorderRadius.circular(12),
-                        image: product.image == null
-                            ? null
-                            : DecorationImage(
-                                image: NetworkImage(product.image!),
-                                fit: BoxFit.cover)),
+                      color: context.colorScheme.secondaryContainer,
+                      borderRadius: BorderRadius.circular(12),
+                      image: product.image == null
+                          ? null
+                          : DecorationImage(
+                              image: NetworkImage(product.image!),
+                              fit: BoxFit.cover,
+                            ),
+                    ),
                   ),
-                  const SizedBox(height: 8),
-                  FilledButton.tonal(
+                  StylesVGap.xSmall,
+                  FilledButton(
+                    style: FilledButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: StyledBorderRadius.medium),
+                    ),
                     onPressed: () {
                       log('url: ${product.url}', name: 'ShoppingProductCard');
                       if (product.url == null) {
@@ -57,7 +64,7 @@ class ShoppingProductCard extends StatelessWidget {
                   )
                 ],
               ),
-              const SizedBox(width: 8),
+              StylesHGap.medium,
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,6 +80,7 @@ class ShoppingProductCard extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
+                    StylesVGap.xSmall,
                     ValueWithLabelInRow(label: 'Price', value: product.price),
                     ValueWithLabelInRow(label: 'Color', value: product.color),
                     ValueWithLabelInRow(label: 'Size', value: product.size),
@@ -111,7 +119,9 @@ class ValueWithLabelInRow extends StatelessWidget {
       children: [
         Text(
           '$label: ',
-          style: context.textTheme.titleSmall,
+          style: context.textTheme.titleSmall?.copyWith(
+            color: context.colorScheme.primary,
+          ),
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),

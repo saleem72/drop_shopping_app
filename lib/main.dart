@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeProvider.lightTheme('Product Sans'),
       darkTheme: ThemeProvider.darkTheme('Product Sans'),
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.dark,
       home: const BottomBarScreen(),
     );
   }

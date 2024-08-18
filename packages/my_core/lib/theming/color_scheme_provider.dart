@@ -8,9 +8,9 @@ class ColorSchemeProvider {
   static ColorScheme darkFromCorePalette = ColorScheme(
     brightness: Brightness.dark,
 
-    primary: Pallet.primary.shade800,
-    onPrimary: Pallet.primary.shade50,
-    primaryContainer: Pallet.primary.shade300,
+    primary: Pallet.primary.shade500,
+    onPrimary: Pallet.primary.shade900,
+    primaryContainer: Pallet.primary.shade200,
     onPrimaryContainer: Pallet.primary.shade900,
     inversePrimary: Pallet.primary.shade400,
 
@@ -29,7 +29,7 @@ class ColorSchemeProvider {
     errorContainer: Pallet.error.shade200,
     onErrorContainer: Pallet.error.shade900,
 
-    background: Pallet.neutral.shade400,
+    background: Pallet.neutralVariant.shade900,
     onBackground: Pallet.neutral.shade50,
     surface: Pallet.neutral.shade700,
     onSurface: Pallet.neutral.shade50,
@@ -46,7 +46,7 @@ class ColorSchemeProvider {
   static ColorScheme lightFromCorePalette = ColorScheme(
     brightness: Brightness.light,
 
-    primary: Pallet.primary.shade500,
+    primary: Pallet.primary.shade800,
     onPrimary: Pallet.primary.shade50, // Pallet.primary.shade50,
     primaryContainer: Pallet.primary.shade200,
     onPrimaryContainer: Pallet.primary.shade800,

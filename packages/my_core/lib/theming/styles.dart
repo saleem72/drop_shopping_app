@@ -39,20 +39,31 @@ class DarkStyles {
         ),
       );
 
-  static TextTheme textTheme = const TextTheme()
-      .copyWith(
+  static TextTheme textTheme() {
+    final greyText = Pallet.secondary.shade200;
+    final coloredText = Pallet.primary.shade500;
+    return TextTheme(
         headlineLarge: FontStyles.headlineLarge,
         headlineMedium: FontStyles.headlineMedium,
-        labelLarge: FontStyles.labelLarge,
-        labelMedium: FontStyles.labelMedium,
-        displayMedium: FontStyles.labelMedium.copyWith(
-          color: Colors.white,
+        labelLarge: FontStyles.labelLarge.copyWith(
+          color: greyText,
         ),
-      )
-      .apply(
-        displayColor: Pallet.primary.shade500,
-        bodyColor: Pallet.secondary.shade300,
-      );
+        labelMedium: FontStyles.labelMedium,
+        titleLarge: FontStyles.labelLarge.copyWith(
+          color: coloredText,
+        ),
+        displayMedium: FontStyles.labelMedium.copyWith(
+          color: greyText,
+        ),
+        bodyLarge: FontStyles.bodyLarge.copyWith(
+          color: greyText,
+        ));
+  }
+
+  static final appBarTheme = AppBarTheme(
+    backgroundColor: Colors.transparent,
+    foregroundColor: Pallet.primary.shade500,
+  );
 
   static final DrawerThemeData drawerTheme = DrawerThemeData(
     backgroundColor: Pallet.primary.shade800,
@@ -83,16 +94,13 @@ class DarkStyles {
 
   static final bottomNavigationBarTheme = BottomNavigationBarThemeData(
     backgroundColor: Pallet.secondary.shade700,
+    selectedItemColor: Pallet.primary.shade500,
+    unselectedItemColor: Pallet.secondary.shade100,
   );
 
   static const cardTheme = CardTheme(
     color: Pallet.secondary,
     shadowColor: Colors.white24,
-  );
-
-  static final appBarTheme = AppBarTheme(
-    backgroundColor: Colors.transparent,
-    foregroundColor: Pallet.primary.shade800,
   );
 }
 
@@ -108,22 +116,33 @@ class LightStyles {
     background: Pallet.neutral.shade50,
   );
 
-  static TextTheme textTheme = TextTheme(
-    headlineLarge: FontStyles.headlineLarge,
-    headlineMedium: FontStyles.headlineMedium,
-    labelLarge: FontStyles.labelLarge,
-    labelMedium: FontStyles.labelMedium,
-    displayMedium: FontStyles.labelMedium.copyWith(
-      color: Colors.black,
-    ),
-  ).apply(
-    displayColor: Pallet.primary.shade800,
-    bodyColor: Pallet.secondary.shade700,
-  );
+  static TextTheme textTheme() {
+    final greyText = Pallet.secondary.shade300;
+    final coloredText = Pallet.primary.shade800;
+    return TextTheme(
+        headlineLarge: FontStyles.headlineLarge,
+        headlineMedium: FontStyles.headlineMedium,
+        labelLarge: FontStyles.labelLarge.copyWith(
+          color: greyText,
+        ),
+        labelMedium: FontStyles.labelMedium,
+        titleLarge: FontStyles.labelLarge.copyWith(
+          color: coloredText,
+        ),
+        displayMedium: FontStyles.labelMedium.copyWith(
+          color: greyText,
+        ),
+        bodyLarge: FontStyles.bodyLarge.copyWith(
+          color: greyText,
+        ));
+  }
 
   static final appBarTheme = AppBarTheme(
     backgroundColor: Colors.transparent,
-    foregroundColor: Pallet.primary.shade500,
+    // iconTheme: IconThemeData(
+    //   color: Pallet.primary.shade800,
+    // ),
+    foregroundColor: Pallet.primary.shade800,
   );
 
   static final ProgressIndicatorThemeData progressIndicatorTheme =
@@ -151,9 +170,9 @@ class LightStyles {
     surfaceTintColor: Colors.white,
   );
 
-  static const iconTheme = IconThemeData(
+  static final iconTheme = IconThemeData(
     size: IconSizes.medium,
-    color: Pallet.secondary,
+    color: Pallet.primary.shade800,
   );
 
   static final snackBarTheme = SnackBarThemeData(

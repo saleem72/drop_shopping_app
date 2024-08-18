@@ -5,7 +5,6 @@ import 'package:drop_shopping_app/core/domain/models/shopping_website.dart';
 import 'package:drop_shopping_app/core/presentation/widgets/shopping_websites_section.dart';
 import 'package:flutter/material.dart';
 import 'package:my_core/my_core.dart';
-import 'package:my_core/theming/pallet.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -18,9 +17,7 @@ class HomeScreen extends StatelessWidget {
             IconThemeData(color: Theme.of(context).colorScheme.secondary),
         title: Text(
           'Home',
-          style: context.textTheme.labelLarge?.copyWith(
-            color: Pallet.primary.shade500,
-          ),
+          style: context.textTheme.titleLarge,
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,

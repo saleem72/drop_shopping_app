@@ -26,7 +26,7 @@ class ThemeProvider {
 
   static ThemeData lightTheme(String fontFamily) {
     final colorScheme = ColorSchemeProvider.lightFromCorePalette;
-    final textTheme = LightStyles.textTheme;
+    final textTheme = LightStyles.textTheme();
 
     return ThemeData(
       useMaterial3: true,
@@ -36,6 +36,7 @@ class ThemeProvider {
       colorScheme: colorScheme,
       textTheme: textTheme,
       appBarTheme: LightStyles.appBarTheme,
+      iconTheme: LightStyles.iconTheme,
     );
   }
 
@@ -45,7 +46,8 @@ class ThemeProvider {
         fontFamily: fontFamily,
         scaffoldBackgroundColor: Pallet.neutral.shade800,
         colorScheme: ColorSchemeProvider.darkFromCorePalette,
-        textTheme: DarkStyles.textTheme,
+        textTheme: DarkStyles.textTheme(),
         appBarTheme: DarkStyles.appBarTheme,
+        bottomNavigationBarTheme: DarkStyles.bottomNavigationBarTheme,
       );
 }

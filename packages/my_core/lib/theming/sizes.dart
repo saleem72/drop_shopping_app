@@ -69,11 +69,11 @@ class RadiusSizes {
 class FontSizes {
   FontSizes._internal();
 
-  /// = 8
-  static const double xxSmallSize = 8;
-
   /// = 12
-  static const double xSmallSize = 12;
+  static const double xxSmallSize = 12;
+
+  /// = 14
+  static const double xSmallSize = 14;
 
   /// = 16
   static const double small = 16;
