@@ -19,9 +19,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: DropShoppingTheme.light,
+      theme: DropShoppingTheme.dark,
       darkTheme: DropShoppingTheme.dark,
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.light,
       home: const BottomBarScreen(),
     );
   }

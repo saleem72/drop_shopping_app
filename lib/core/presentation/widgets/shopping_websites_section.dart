@@ -2,7 +2,7 @@
 
 import 'package:drop_shopping_app/core/domain/models/shopping_website.dart';
 import 'package:drop_shopping_app/core/styles/sizes.dart';
-import 'package:drop_shopping_app/core/styles/styles.dart';
+import 'package:drop_shopping_app/core/styles/styled.dart';
 import 'package:flutter/material.dart';
 import 'package:my_core/my_core.dart';
 
@@ -38,8 +38,8 @@ class ShoppingWebsitesSection extends StatelessWidget {
                   padding: const EdgeInsets.all(16),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
-                    crossAxisSpacing: GapSizes.mediumGap,
-                    mainAxisSpacing: GapSizes.mediumGap,
+                    crossAxisSpacing: GapSizes.medium,
+                    mainAxisSpacing: GapSizes.medium,
                   ),
                   itemCount: sites.length,
                   itemBuilder: (BuildContext context, int index) {

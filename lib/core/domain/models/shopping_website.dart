@@ -30,9 +30,9 @@ class ShoppingWebsite extends Equatable {
 
   static ShoppingWebsite? fromJson(Map<String, dynamic> map) {
     final vendor = ShoppingWebsiteVendor.fromString(map['vendor']);
-    if (vendor == null) {
-      return null;
-    }
+    // if (vendor == null) {
+    //   return null;
+    // }
     return ShoppingWebsite(
       id: map['id'],
       name: map['name'],

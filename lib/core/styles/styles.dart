@@ -1,89 +1,164 @@
-import 'package:drop_shopping_app/core/styles/sizes.dart';
+//
+
+import 'package:drop_shopping_app/core/styles/colors.dart';
+import 'package:drop_shopping_app/core/styles/styled.dart';
 import 'package:flutter/material.dart';
+import 'package:my_core/theming/pallet.dart';
 
-class StylesEdgeInsets {
-  StylesEdgeInsets._internal();
+import 'font_styles.dart';
+import 'sizes.dart';
 
-  static const EdgeInsets xSmallSymmetricHorizontal = EdgeInsets.symmetric(
-    horizontal: PaddingSizes.xSmallPadding,
-  );
-  static const EdgeInsets smallSymmetricHorizontal = EdgeInsets.symmetric(
-    horizontal: PaddingSizes.smallPadding,
-  );
-  static const EdgeInsets mediumSymmetricHorizontal = EdgeInsets.symmetric(
-    horizontal: PaddingSizes.mediumPadding,
+class DarkStyles {
+  DarkStyles._internal();
+
+  static final colorScheme = ColorScheme.fromSeed(
+    brightness: Brightness.dark,
+    seedColor: DropShoppingColors.darkSeedColor,
+    primary: DropShoppingColors.darkPrimary,
+    secondary: DropShoppingColors.darkSecondary,
+    tertiary: DropShoppingColors.darkTertiary,
+    background: DropShoppingColors.darkBackground,
+    surface: DropShoppingColors.darkSurface,
   );
 
-  static const EdgeInsets largeSymmetricHorizontal = EdgeInsets.symmetric(
-    horizontal: PaddingSizes.largePadding,
+  static const ProgressIndicatorThemeData progressIndicatorTheme =
+      ProgressIndicatorThemeData(
+    color: DropShoppingColors.darkPrimary,
   );
 
-  static const EdgeInsets xLargeSymmetricHorizontal = EdgeInsets.symmetric(
-    horizontal: PaddingSizes.xLargePadding,
+  static ElevatedButtonThemeData elevatedButtonTheme = ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      shape: const StadiumBorder(),
+      elevation: 0,
+      shadowColor: Colors.transparent,
+      foregroundColor: Colors.black,
+      textStyle: FontStyles.elevatedButtonTextStyle.copyWith(
+        fontWeight: FontWeight.bold,
+        fontSize: FontSizes.small,
+        fontFamily: 'Product Sans',
+      ),
+    ),
   );
-  static const EdgeInsets xxLargeSymmetricHorizontal = EdgeInsets.symmetric(
-    horizontal: PaddingSizes.xxLargePadding,
+
+  static TextTheme textTheme = const TextTheme()
+      .copyWith(
+        headlineLarge: FontStyles.headlineLarge,
+        headlineMedium: FontStyles.headlineMedium,
+        labelLarge: FontStyles.labelLarge,
+        labelMedium: FontStyles.labelMedium,
+        displayMedium: FontStyles.labelMedium.copyWith(
+          color: Colors.white,
+        ),
+      )
+      .apply(
+        displayColor: Pallet.primary.shade500,
+        bodyColor: colorScheme.secondary,
+      );
+
+  static DrawerThemeData drawerTheme = const DrawerThemeData(
+    backgroundColor: DropShoppingColors.darkSeedColor,
+    surfaceTintColor: Colors.black,
+  );
+
+  static IconThemeData iconTheme = const IconThemeData(
+    size: IconSizes.medium,
+    color: DropShoppingColors.darkSecondary,
+  );
+
+  static SnackBarThemeData snackBarTheme = SnackBarThemeData(
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(RadiusSizes.medium),
+        topRight: Radius.circular(RadiusSizes.medium),
+      ),
+    ),
+    backgroundColor: DropShoppingColors.darkPrimary,
+    actionTextColor: Colors.black,
+    closeIconColor: Colors.black,
+    insetPadding: const EdgeInsets.all(PaddingSizes.xSmall),
+    contentTextStyle: FontStyles.labelMedium.copyWith(
+      fontWeight: FontWeight.bold,
+      color: Colors.black,
+    ),
+  );
+
+  static final bottomNavigationBarTheme = BottomNavigationBarThemeData(
+    backgroundColor: Pallet.secondary.shade700,
+  );
+
+  static const cardTheme = CardTheme(
+    color: Pallet.secondary,
+    shadowColor: Colors.white24,
   );
 }
 
-class StylesVGap {
-  StylesVGap._internal();
-  static const SizedBox xxSmall = SizedBox(height: GapSizes.xxSmallGap);
-  static const SizedBox xSmall = SizedBox(height: GapSizes.xSmallGap);
-  static const SizedBox medium = SizedBox(height: GapSizes.mediumGap);
-  static const SizedBox large = SizedBox(height: GapSizes.largeGap);
-  static const SizedBox xLarge = SizedBox(height: GapSizes.xLargeGap);
-  static const SizedBox xxLarge = SizedBox(height: GapSizes.xxLargeGap);
-  static const SizedBox xxxLarge = SizedBox(height: GapSizes.xxxLargeGap);
-}
+class LightStyles {
+  LightStyles._internal();
 
-class StylesHGap {
-  StylesHGap._internal();
-  static const SizedBox xxSmall = SizedBox(width: GapSizes.xxSmallGap);
-  static const SizedBox xSmall = SizedBox(width: GapSizes.xSmallGap);
-  static const SizedBox medium = SizedBox(width: GapSizes.mediumGap);
-  static const SizedBox large = SizedBox(width: GapSizes.largeGap);
-  static const SizedBox xLarge = SizedBox(width: GapSizes.xLargeGap);
-  static const SizedBox xxLarge = SizedBox(width: GapSizes.xxLargeGap);
-  static const SizedBox xxxLarge = SizedBox(width: GapSizes.xxxLargeGap);
-}
+  static ColorScheme colorScheme = ColorScheme.fromSeed(
+    brightness: Brightness.light,
+    seedColor: DropShoppingColors.lightSeedColor,
+    primary: DropShoppingColors.lightPrimary,
+    secondary: DropShoppingColors.lightSecondary,
+    tertiary: DropShoppingColors.lightTertiary,
+    background: DropShoppingColors.lightBackground,
+  );
 
-class Styles {
-  Styles._internal();
+  static TextTheme textTheme = TextTheme(
+    headlineLarge: FontStyles.headlineLarge,
+    headlineMedium: FontStyles.headlineMedium,
+    labelLarge: FontStyles.labelLarge,
+    labelMedium: FontStyles.labelMedium,
+    displayMedium: FontStyles.labelMedium.copyWith(
+      color: Colors.black,
+    ),
+  ).apply(
+    displayColor: DropShoppingColors.lightPrimary,
+  );
 
-  static const TextStyle elevatedButtonTextStyle =
-      TextStyle(color: Colors.black, fontWeight: FontWeight.bold);
-}
+  static const ProgressIndicatorThemeData progressIndicatorTheme =
+      ProgressIndicatorThemeData(
+    color: DropShoppingColors.lightPrimary,
+  );
 
-class FontStyles {
-  FontStyles._internal();
+  static final elevatedButtonTheme = ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      shape: const StadiumBorder(),
+      elevation: 0,
+      foregroundColor: Colors.white,
+      padding: StylesEdgeInsets.mediumSymmetricHorizontal,
+      shadowColor: Colors.transparent,
+      textStyle: FontStyles.elevatedButtonTextStyle.copyWith(
+        fontWeight: FontWeight.bold,
+        fontSize: FontSizes.small,
+        fontFamily: 'Product Sans',
+      ),
+    ),
+  );
 
-  static const TextStyle headlineLarge =
-      TextStyle(fontSize: FontSizes.largeSize);
+  static const drawerTheme = DrawerThemeData(
+    backgroundColor: DropShoppingColors.lightSeedColor,
+    surfaceTintColor: Colors.white,
+  );
 
-  static const TextStyle headlineMedium =
-      TextStyle(fontSize: FontSizes.mediumSize);
+  static const iconTheme = IconThemeData(
+    size: IconSizes.medium,
+    color: DropShoppingColors.darkSecondary,
+  );
 
-  static const TextStyle labelLarge = TextStyle(fontSize: FontSizes.mediumSize);
-
-  static const TextStyle labelMedium = TextStyle(fontSize: FontSizes.smallSize);
-}
-
-class StylesBorderRadius {
-  StylesBorderRadius._internal();
-
-  /// = 6
-  static final BorderRadius xSmall = BorderRadius.circular(RadiusSizes.xSmall);
-
-  /// = 8
-  static final BorderRadius small = BorderRadius.circular(RadiusSizes.small);
-
-  /// = 12
-  static final BorderRadius medium = BorderRadius.circular(RadiusSizes.medium);
-
-  /// = 16
-  static final BorderRadius large = BorderRadius.circular(RadiusSizes.large);
-
-  /// = 24
-  static final BorderRadius xLarge = BorderRadius.circular(RadiusSizes.xLarge);
+  static final snackBarTheme = SnackBarThemeData(
+    shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+      topLeft: Radius.circular(RadiusSizes.medium),
+      topRight: Radius.circular(RadiusSizes.medium),
+    )),
+    backgroundColor: DropShoppingColors.lightPrimary,
+    actionTextColor: Colors.white,
+    closeIconColor: Colors.white,
+    insetPadding: const EdgeInsets.all(PaddingSizes.xSmall),
+    contentTextStyle: FontStyles.labelMedium.copyWith(
+      fontWeight: FontWeight.bold,
+      color: Colors.white,
+    ),
+  );
 }

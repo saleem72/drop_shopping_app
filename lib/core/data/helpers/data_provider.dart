@@ -94,5 +94,25 @@ class DataProvider {
       vendor: ShoppingWebsiteVendor.sephora,
       keys: [],
     ),
+
+    //
+    const ShoppingWebsite(
+      id: 8,
+      name: "ebay",
+      url: "https://www.ebay.com/",
+      image: null,
+      vendor: ShoppingWebsiteVendor.ebay,
+      keys: [],
+    ),
+
+    //
+    const ShoppingWebsite(
+      id: 8,
+      name: "dior",
+      url: "https://www.dior.com/en_int/",
+      image: null,
+      vendor: ShoppingWebsiteVendor.dior,
+      keys: [],
+    ),
   ];
 }

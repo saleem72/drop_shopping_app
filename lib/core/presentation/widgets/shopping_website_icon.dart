@@ -25,14 +25,14 @@ class ShoppingWebsiteIcon extends StatelessWidget {
         height: size,
         width: size,
         decoration: BoxDecoration(
-          color: AppColors.lightPink,
+          color: context.colorScheme.background,
           borderRadius: BorderRadius.circular(RadiusSizes.small),
         ),
         padding: const EdgeInsets.all(8),
         child: Center(
           child: ClipRRect(
             borderRadius: BorderRadius.circular(8),
-            child: CachedImage(url: website.image),
+            child: CachedImage(title: website.name, url: website.image),
           ),
         ),
       ),

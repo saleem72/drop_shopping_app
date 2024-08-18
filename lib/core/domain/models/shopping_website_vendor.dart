@@ -12,6 +12,8 @@ enum ShoppingWebsiteVendor {
   zara,
   sephora,
   amazon,
+  ebay,
+  dior,
   unKnown;
 
   static ShoppingWebsiteVendor fromString(String value) => switch (value) {
@@ -23,6 +25,8 @@ enum ShoppingWebsiteVendor {
         "amazon" => ShoppingWebsiteVendor.amazon,
         "zara" => ShoppingWebsiteVendor.zara,
         "sephora" => ShoppingWebsiteVendor.sephora,
+        "ebay" => ShoppingWebsiteVendor.ebay,
+        "dior" => ShoppingWebsiteVendor.dior,
         String() => ShoppingWebsiteVendor.unKnown,
       };
 
@@ -36,6 +40,22 @@ enum ShoppingWebsiteVendor {
         ShoppingWebsiteVendor.zara => ScriptHolderProvider.zaraScriptHolder,
         ShoppingWebsiteVendor.sephora =>
           ScriptHolderProvider.sephoraScriptHolder,
+        ShoppingWebsiteVendor.ebay => ScriptHolderProvider.ebayScriptHolder,
+        ShoppingWebsiteVendor.dior => ScriptHolderProvider.diorScriptHolder,
         ShoppingWebsiteVendor.unKnown => ScriptHolder.empty(),
+      };
+
+  String get title => switch (this) {
+        ShoppingWebsiteVendor.hm => 'hm',
+        ShoppingWebsiteVendor.adidas => 'adidas',
+        ShoppingWebsiteVendor.puma => 'puma',
+        ShoppingWebsiteVendor.nike => 'nike',
+        ShoppingWebsiteVendor.sheIn => 'sheIn',
+        ShoppingWebsiteVendor.amazon => 'amazon',
+        ShoppingWebsiteVendor.zara => 'zara',
+        ShoppingWebsiteVendor.sephora => 'sephora',
+        ShoppingWebsiteVendor.ebay => 'ebay',
+        ShoppingWebsiteVendor.dior => 'dior',
+        ShoppingWebsiteVendor.unKnown => 'unKnown',
       };
 }

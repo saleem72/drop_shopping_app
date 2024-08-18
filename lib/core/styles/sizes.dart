@@ -3,51 +3,112 @@
 class PaddingSizes {
   const PaddingSizes._internal();
 
-  static const double xSmallPadding = 4;
-  static const double smallPadding = 8;
-  static const double mediumPadding = 16;
-  static const double largePadding = 32;
-  static const double xLargePadding = 64;
-  static const double xxLargePadding = 128;
+  /// = 4
+  static const double xSmall = 4;
+
+  /// = 8
+  static const double small = 8;
+
+  /// = 16
+  static const double medium = 16;
+
+  /// = 32
+  static const double large = 32;
+
+  /// = 64
+  static const double xLarge = 64;
+
+  /// = 128
+  static const double xxLarge = 128;
 }
 
 class GapSizes {
   const GapSizes._internal();
-  static const double xxSmallGap = 4;
-  static const double xSmallGap = 8;
-  static const double mediumGap = 16;
-  static const double largeGap = 24;
-  static const double xLargeGap = 32;
-  static const double xxLargeGap = 40;
-  static const double xxxLargeGap = 64;
+
+  /// = 4
+  static const double xxSmall = 4;
+
+  /// = 8
+  static const double xSmall = 8;
+
+  /// = 16
+  static const double medium = 16;
+
+  /// = 24
+  static const double large = 24;
+
+  /// = 32
+  static const double xLarge = 32;
+
+  /// = 40
+  static const double xxLarge = 40;
+
+  /// = 64
+  static const double xxxLarge = 64;
 }
 
 class RadiusSizes {
   RadiusSizes._internal();
+
+  /// = 6
   static const double xSmall = 6;
+
+  /// = 8
   static const double small = 8;
+
+  /// = 12
   static const double medium = 12;
+
+  /// = 16
   static const double large = 16;
+
+  /// = 24
   static const double xLarge = 24;
 }
 
 class FontSizes {
   FontSizes._internal();
+
+  /// = 8
   static const double xxSmallSize = 8;
+
+  /// = 12
   static const double xSmallSize = 12;
-  static const double smallSize = 16;
-  static const double mediumSize = 24;
-  static const double largeSize = 32;
-  static const double xLargeSize = 64;
-  static const double xxLargeSize = 80;
-  static const double xxxLargeSize = 96;
+
+  /// = 16
+  static const double small = 16;
+
+  /// = 24
+  static const double medium = 24;
+
+  /// = 32
+  static const double large = 32;
+
+  /// = 64
+  static const double xLarge = 64;
+
+  /// = 80
+  static const double xxLarge = 80;
+
+  /// = 96
+  static const double xxxLarge = 96;
 }
 
 class IconSizes {
   IconSizes._internal();
-  static const double smallIconSize = 16;
-  static const double mediumIconSize = 32;
-  static const double largeIconSize = 64;
-  static const double xLargeIconSize = 80;
-  static const double xxLargeIconSize = 160;
+
+  /// = 16
+  static const double small = 16;
+
+  /// = 32
+  static const double medium = 32;
+
+  /// = 64
+  static const double large = 64;
+
+  /// = 80
+  static const double xLarge = 80;
+
+  /// = 160
+  static const double xxLarge = 160;
 }

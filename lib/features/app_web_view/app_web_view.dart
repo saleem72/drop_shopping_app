@@ -5,6 +5,7 @@ import 'dart:developer' as developer;
 import 'dart:isolate';
 
 import 'package:drop_shopping_app/core/data/dtos/js_products_stuff.dart';
+import 'package:drop_shopping_app/core/data/helpers/script_holder.dart';
 import 'package:drop_shopping_app/features/products_list_screen/products_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:html/dom.dart' as dom;
@@ -224,62 +225,20 @@ class _AppWebViewState extends State<AppWebView> {
       isLoading = true;
     });
 
-//     const script = '''
+    final scriptHolder = ScriptHolder(
+      titles:
+          'Array.from(document.querySelectorAll("div > div > div > div > div.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-7.mui-style-1pastnp > div.top-body.MuiBox-root.mui-style-19idom > div > a")).map((x) => x.textContent);',
+      quantities: null,
+      images: null,
+      prices: null,
+      urls: null,
+      colors: null,
+      sizes: null,
+    );
 
-// function getQuantities() {
-//   return [];
-// }
+    // final script = widget.website.vendor.scriptHolder.script;
 
-// function getImages() {
-//   return [];
-// }
-
-// function getTitles() {
-//   return Array.from(document.querySelectorAll("div > div > div.basket-product-title-container > a.product-title > span")).map((x) => x.textContent.trim());
-// }
-
-// function getPrices() {
-//   return Array.from(document.querySelectorAll("div > div > div.bagItem-utils.h-display-ib.h-valign-t.h-align-r > p > b")).map((x) => x.textContent.trim());
-// }
-
-// function getUrls() {
-//   return [];
-// }
-
-// function getColors() {
-//   return [];
-// }
-
-// function getSizes() {
-//   return [];
-// }
-
-// function toObject(){
-
-//     var dict = {
-//         titles: [],
-//         images: [],
-//         prices: [],
-//         urls: [],
-//         colors: [],
-//         sizes: [],
-//         quantities: []
-//     };
-
-//     dict.titles.push.apply(dict.titles, getTitles());
-//     dict.images.push.apply(dict.images, getImages());
-//     dict.prices.push.apply(dict.prices, getPrices());
-//     dict.urls.push.apply(dict.urls, getUrls());
-//     dict.colors.push.apply(dict.colors, getColors());
-//     dict.sizes.push.apply(dict.sizes, getSizes());
-//     dict.quantities.push.apply(dict.quantities, getQuantities());
-//     return dict;
-
-// }
-// toObject();
-// ''';
-
-    final script = widget.website.vendor.scriptHolder.script;
+    final script = scriptHolder.script;
 
     try {
       final body =

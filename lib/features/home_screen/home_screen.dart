@@ -3,8 +3,10 @@
 import 'package:drop_shopping_app/core/data/helpers/data_provider.dart';
 import 'package:drop_shopping_app/core/domain/models/shopping_website.dart';
 import 'package:drop_shopping_app/core/presentation/widgets/shopping_websites_section.dart';
+import 'package:drop_shopping_app/core/styles/styled.dart';
 import 'package:flutter/material.dart';
 import 'package:my_core/my_core.dart';
+import 'package:my_core/theming/pallet.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -18,7 +20,7 @@ class HomeScreen extends StatelessWidget {
         title: Text(
           'Home',
           style: context.textTheme.labelLarge?.copyWith(
-            color: context.colorScheme.primary,
+            color: Pallet.primary.shade500,
           ),
         ),
         backgroundColor: Colors.transparent,
@@ -33,20 +35,7 @@ class HomeScreen extends StatelessWidget {
                   DataProvider.websites.whereType<ShoppingWebsite>().toList(),
             ),
           ),
-          Material(
-            elevation: 4,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-            child: Container(
-              padding: const EdgeInsets.all(16),
-              child: Container(
-                margin: EdgeInsets.all(32),
-                color: Colors.green,
-                height: 180,
-                width: 180,
-              ),
-            ),
-          ),
+          const SizedBox(height: 32),
         ],
       ),
     );
