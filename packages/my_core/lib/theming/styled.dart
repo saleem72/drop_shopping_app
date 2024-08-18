@@ -1,4 +1,4 @@
-import 'package:drop_shopping_app/core/styles/sizes.dart';
+import 'package:my_core/theming/sizes.dart';
 import 'package:flutter/material.dart';
 
 class StylesEdgeInsets {

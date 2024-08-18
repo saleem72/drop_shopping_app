@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class DropShoppingColors {
+class OriginColors {
   static const Color lightSeedColor = Color(0xFF098E1F);
   static const Color lightPrimary = Color(0xFF098E1F);
   static const Color lightSecondary = Color(0xFFADADAD);

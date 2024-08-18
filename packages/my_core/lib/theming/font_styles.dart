@@ -8,7 +8,7 @@ import 'sizes.dart';
 class FontStyles {
   FontStyles._internal();
 
-  static const String fontFamily = 'Product Sans';
+  // static const String fontFamily = 'Product Sans';
 
   static const TextStyle headlineLarge = TextStyle(fontSize: FontSizes.large);
 
@@ -18,9 +18,9 @@ class FontStyles {
 
   static const TextStyle labelMedium = TextStyle(fontSize: FontSizes.small);
 
-  static const TextStyle elevatedButtonTextStyle = TextStyle(
-    color: Colors.black,
-    fontWeight: FontWeight.bold,
-    fontFamily: fontFamily,
-  );
+  static TextStyle elevatedButtonTextStyle(String fontFamily) => TextStyle(
+        color: Colors.black,
+        fontWeight: FontWeight.bold,
+        fontFamily: fontFamily,
+      );
 }

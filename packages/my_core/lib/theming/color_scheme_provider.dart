@@ -67,7 +67,7 @@ class ColorSchemeProvider {
     errorContainer: Pallet.error.shade300,
     onErrorContainer: Pallet.error.shade800,
 
-    background: Pallet.secondary.shade50,
+    background: Colors.white,
     onBackground: Pallet.neutral.shade900,
     surface: Colors.white,
     onSurface: Pallet.neutral.shade900,

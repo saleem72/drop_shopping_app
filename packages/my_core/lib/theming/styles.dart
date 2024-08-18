@@ -1,7 +1,6 @@
 //
 
-import 'package:drop_shopping_app/core/styles/colors.dart';
-import 'package:drop_shopping_app/core/styles/styled.dart';
+import 'package:my_core/theming/styled.dart';
 import 'package:flutter/material.dart';
 import 'package:my_core/theming/pallet.dart';
 
@@ -13,32 +12,32 @@ class DarkStyles {
 
   static final colorScheme = ColorScheme.fromSeed(
     brightness: Brightness.dark,
-    seedColor: DropShoppingColors.darkSeedColor,
-    primary: DropShoppingColors.darkPrimary,
-    secondary: DropShoppingColors.darkSecondary,
-    tertiary: DropShoppingColors.darkTertiary,
-    background: DropShoppingColors.darkBackground,
-    surface: DropShoppingColors.darkSurface,
+    seedColor: Pallet.primary.shade800,
+    primary: Pallet.primary.shade800,
+    secondary: Pallet.secondary,
+    tertiary: Pallet.tertiary,
+    background: Pallet.neutral.shade800,
   );
 
-  static const ProgressIndicatorThemeData progressIndicatorTheme =
+  static final ProgressIndicatorThemeData progressIndicatorTheme =
       ProgressIndicatorThemeData(
-    color: DropShoppingColors.darkPrimary,
+    color: Pallet.primary.shade800,
   );
 
-  static ElevatedButtonThemeData elevatedButtonTheme = ElevatedButtonThemeData(
-    style: ElevatedButton.styleFrom(
-      shape: const StadiumBorder(),
-      elevation: 0,
-      shadowColor: Colors.transparent,
-      foregroundColor: Colors.black,
-      textStyle: FontStyles.elevatedButtonTextStyle.copyWith(
-        fontWeight: FontWeight.bold,
-        fontSize: FontSizes.small,
-        fontFamily: 'Product Sans',
-      ),
-    ),
-  );
+  static ElevatedButtonThemeData elevatedButtonTheme(String fontFamily) =>
+      ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          shape: const StadiumBorder(),
+          elevation: 0,
+          shadowColor: Colors.transparent,
+          foregroundColor: Colors.black,
+          textStyle: FontStyles.elevatedButtonTextStyle(fontFamily).copyWith(
+            fontWeight: FontWeight.bold,
+            fontSize: FontSizes.small,
+            fontFamily: 'Product Sans',
+          ),
+        ),
+      );
 
   static TextTheme textTheme = const TextTheme()
       .copyWith(
@@ -52,17 +51,17 @@ class DarkStyles {
       )
       .apply(
         displayColor: Pallet.primary.shade500,
-        bodyColor: colorScheme.secondary,
+        bodyColor: Pallet.secondary.shade300,
       );
 
-  static DrawerThemeData drawerTheme = const DrawerThemeData(
-    backgroundColor: DropShoppingColors.darkSeedColor,
+  static final DrawerThemeData drawerTheme = DrawerThemeData(
+    backgroundColor: Pallet.primary.shade800,
     surfaceTintColor: Colors.black,
   );
 
-  static IconThemeData iconTheme = const IconThemeData(
+  static final IconThemeData iconTheme = IconThemeData(
     size: IconSizes.medium,
-    color: DropShoppingColors.darkSecondary,
+    color: Pallet.primary.shade800,
   );
 
   static SnackBarThemeData snackBarTheme = SnackBarThemeData(
@@ -72,7 +71,7 @@ class DarkStyles {
         topRight: Radius.circular(RadiusSizes.medium),
       ),
     ),
-    backgroundColor: DropShoppingColors.darkPrimary,
+    backgroundColor: Pallet.primary.shade800,
     actionTextColor: Colors.black,
     closeIconColor: Colors.black,
     insetPadding: const EdgeInsets.all(PaddingSizes.xSmall),
@@ -90,6 +89,11 @@ class DarkStyles {
     color: Pallet.secondary,
     shadowColor: Colors.white24,
   );
+
+  static final appBarTheme = AppBarTheme(
+    backgroundColor: Colors.transparent,
+    foregroundColor: Pallet.primary.shade800,
+  );
 }
 
 class LightStyles {
@@ -97,11 +101,11 @@ class LightStyles {
 
   static ColorScheme colorScheme = ColorScheme.fromSeed(
     brightness: Brightness.light,
-    seedColor: DropShoppingColors.lightSeedColor,
-    primary: DropShoppingColors.lightPrimary,
-    secondary: DropShoppingColors.lightSecondary,
-    tertiary: DropShoppingColors.lightTertiary,
-    background: DropShoppingColors.lightBackground,
+    seedColor: Pallet.primary.shade500,
+    primary: Pallet.primary.shade500,
+    secondary: Pallet.secondary,
+    tertiary: Pallet.tertiary,
+    background: Pallet.neutral.shade50,
   );
 
   static TextTheme textTheme = TextTheme(
@@ -113,37 +117,43 @@ class LightStyles {
       color: Colors.black,
     ),
   ).apply(
-    displayColor: DropShoppingColors.lightPrimary,
+    displayColor: Pallet.primary.shade800,
+    bodyColor: Pallet.secondary.shade700,
   );
 
-  static const ProgressIndicatorThemeData progressIndicatorTheme =
+  static final appBarTheme = AppBarTheme(
+    backgroundColor: Colors.transparent,
+    foregroundColor: Pallet.primary.shade500,
+  );
+
+  static final ProgressIndicatorThemeData progressIndicatorTheme =
       ProgressIndicatorThemeData(
-    color: DropShoppingColors.lightPrimary,
+    color: Pallet.primary.shade500,
   );
 
-  static final elevatedButtonTheme = ElevatedButtonThemeData(
-    style: ElevatedButton.styleFrom(
-      shape: const StadiumBorder(),
-      elevation: 0,
-      foregroundColor: Colors.white,
-      padding: StylesEdgeInsets.mediumSymmetricHorizontal,
-      shadowColor: Colors.transparent,
-      textStyle: FontStyles.elevatedButtonTextStyle.copyWith(
-        fontWeight: FontWeight.bold,
-        fontSize: FontSizes.small,
-        fontFamily: 'Product Sans',
-      ),
-    ),
-  );
+  static elevatedButtonTheme(String fontFamily) => ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          shape: const StadiumBorder(),
+          elevation: 0,
+          foregroundColor: Colors.white,
+          padding: StylesEdgeInsets.mediumSymmetricHorizontal,
+          shadowColor: Colors.transparent,
+          textStyle: FontStyles.elevatedButtonTextStyle(fontFamily).copyWith(
+            fontWeight: FontWeight.bold,
+            fontSize: FontSizes.small,
+            fontFamily: 'Product Sans',
+          ),
+        ),
+      );
 
   static const drawerTheme = DrawerThemeData(
-    backgroundColor: DropShoppingColors.lightSeedColor,
+    backgroundColor: Pallet.secondary,
     surfaceTintColor: Colors.white,
   );
 
   static const iconTheme = IconThemeData(
     size: IconSizes.medium,
-    color: DropShoppingColors.darkSecondary,
+    color: Pallet.secondary,
   );
 
   static final snackBarTheme = SnackBarThemeData(
@@ -152,7 +162,7 @@ class LightStyles {
       topLeft: Radius.circular(RadiusSizes.medium),
       topRight: Radius.circular(RadiusSizes.medium),
     )),
-    backgroundColor: DropShoppingColors.lightPrimary,
+    backgroundColor: Pallet.primary.shade300,
     actionTextColor: Colors.white,
     closeIconColor: Colors.white,
     insetPadding: const EdgeInsets.all(PaddingSizes.xSmall),

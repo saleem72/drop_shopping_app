@@ -3,7 +3,6 @@
 import 'package:drop_shopping_app/core/data/helpers/data_provider.dart';
 import 'package:drop_shopping_app/core/domain/models/shopping_website.dart';
 import 'package:drop_shopping_app/core/presentation/widgets/shopping_websites_section.dart';
-import 'package:drop_shopping_app/core/styles/styled.dart';
 import 'package:flutter/material.dart';
 import 'package:my_core/my_core.dart';
 import 'package:my_core/theming/pallet.dart';

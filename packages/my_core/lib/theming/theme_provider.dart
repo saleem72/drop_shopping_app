@@ -2,10 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:my_core/theming/styles.dart';
 
 import 'color_scheme_provider.dart';
 import 'pallet.dart';
-import 'text_theme_provider.dart';
 
 class ThemeProvider {
   ThemeProvider._internal();
@@ -24,63 +24,28 @@ class ThemeProvider {
     ));
   }
 
-  static ThemeData lightTheme() {
+  static ThemeData lightTheme(String fontFamily) {
     final colorScheme = ColorSchemeProvider.lightFromCorePalette;
-    final textTheme = TextThemeProvider.generate(Brightness.light);
+    final textTheme = LightStyles.textTheme;
+
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.light,
+      fontFamily: fontFamily,
+      scaffoldBackgroundColor: Pallet.neutral.shade50,
       colorScheme: colorScheme,
       textTheme: textTheme,
-      appBarTheme: AppBarTheme(
-        backgroundColor: colorScheme.primary,
-        foregroundColor: colorScheme.onPrimary,
-      ),
-      filledButtonTheme: FilledButtonThemeData(
-        style: FilledButton.styleFrom(
-          backgroundColor: colorScheme.primary,
-          foregroundColor: colorScheme.onPrimary,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-          textStyle: textTheme.titleLarge?.copyWith(
-            color: colorScheme.onPrimary,
-            fontWeight: FontWeight.bold,
-          ),
-          // minimumSize: const Size.fromHeight(46),
-        ),
-      ),
-      elevatedButtonTheme: ElevatedButtonThemeData(
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-            (Set<MaterialState> states) {
-              if (states.contains(MaterialState.pressed)) {
-                return colorScheme.primaryContainer.withOpacity(0.5);
-              }
-              return colorScheme.primaryContainer;
-            },
-          ),
-          shape: MaterialStateProperty.resolveWith<OutlinedBorder?>((states) =>
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
-          textStyle: MaterialStateProperty.resolveWith(
-              (states) => textTheme.titleLarge?.copyWith(
-                    color: colorScheme.onPrimaryContainer,
-                    fontWeight: FontWeight.bold,
-                  )),
-        ),
-      ),
+      appBarTheme: LightStyles.appBarTheme,
     );
   }
 
-  static final ThemeData darkTheme = ThemeData(
-    useMaterial3: true,
-    brightness: Brightness.dark,
-    colorScheme: ColorSchemeProvider.darkFromCorePalette,
-    textTheme: TextThemeProvider.generate(Brightness.dark),
-    // canvasColor: Pallet.neutral.shade700,
-    // fontFamily: 'Poppins',
-    // BottomNavigationBar
-    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      elevation: 4,
-      backgroundColor: Colors.white,
-    ),
-  );
+  static ThemeData darkTheme(String fontFamily) => ThemeData(
+        useMaterial3: true,
+        brightness: Brightness.dark,
+        fontFamily: fontFamily,
+        scaffoldBackgroundColor: Pallet.neutral.shade800,
+        colorScheme: ColorSchemeProvider.darkFromCorePalette,
+        textTheme: DarkStyles.textTheme,
+        appBarTheme: DarkStyles.appBarTheme,
+      );
 }

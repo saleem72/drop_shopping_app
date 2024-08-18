@@ -1,8 +1,8 @@
 //
 
 import 'package:drop_shopping_app/core/domain/models/shopping_website.dart';
-import 'package:drop_shopping_app/core/styles/sizes.dart';
-import 'package:drop_shopping_app/core/styles/styled.dart';
+import 'package:my_core/theming/sizes.dart';
+import 'package:my_core/theming/styled.dart';
 import 'package:flutter/material.dart';
 import 'package:my_core/my_core.dart';
 

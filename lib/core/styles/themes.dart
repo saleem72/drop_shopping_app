@@ -1,20 +1,20 @@
 //
 
-import 'package:drop_shopping_app/core/styles/colors.dart';
-import 'package:drop_shopping_app/core/styles/font_styles.dart';
-import 'package:drop_shopping_app/core/styles/styles.dart';
+import 'package:my_core/theming/pallet.dart';
+import 'package:my_core/theming/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:my_core/theming/color_scheme_provider.dart';
 
 class DropShoppingTheme {
+  static const String fontFamily = 'Product Sans';
   static ThemeData dark = ThemeData(
-    fontFamily: FontStyles.fontFamily,
+    fontFamily: fontFamily,
     // canvasColor: Colors.transparent,
-    scaffoldBackgroundColor: DropShoppingColors.darkScaffoldBackground,
+    scaffoldBackgroundColor: Pallet.neutral.shade800,
     colorScheme: ColorSchemeProvider.darkFromCorePalette,
     textTheme: DarkStyles.textTheme,
     progressIndicatorTheme: DarkStyles.progressIndicatorTheme,
-    elevatedButtonTheme: DarkStyles.elevatedButtonTheme,
+    elevatedButtonTheme: DarkStyles.elevatedButtonTheme(fontFamily),
     drawerTheme: DarkStyles.drawerTheme,
     iconTheme: DarkStyles.iconTheme,
     snackBarTheme: DarkStyles.snackBarTheme,
@@ -23,12 +23,12 @@ class DropShoppingTheme {
   );
 
   static ThemeData light = ThemeData(
-    fontFamily: FontStyles.fontFamily,
+    fontFamily: fontFamily,
     // canvasColor: Colors.green,
-    scaffoldBackgroundColor: DropShoppingColors.lightScaffoldBackground,
+    scaffoldBackgroundColor: Pallet.neutral.shade50,
     colorScheme: ColorSchemeProvider.lightFromCorePalette,
     progressIndicatorTheme: LightStyles.progressIndicatorTheme,
-    elevatedButtonTheme: LightStyles.elevatedButtonTheme,
+    elevatedButtonTheme: LightStyles.elevatedButtonTheme(fontFamily),
     textTheme: LightStyles.textTheme,
     drawerTheme: LightStyles.drawerTheme,
     iconTheme: LightStyles.iconTheme,

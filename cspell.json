@@ -10,6 +10,7 @@
     ],
     "ignorePaths": [
         "data_provider.dart",
-        "app_web_view.dart"
+        "app_web_view.dart",
+        "script_holder_provider.dart"
     ]
 }
