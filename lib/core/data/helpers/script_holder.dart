@@ -11,6 +11,7 @@ class ScriptHolder {
   final String? urls;
   final String? colors;
   final String? sizes;
+  final String? cards;
 
   ScriptHolder({
     required this.titles,
@@ -20,6 +21,7 @@ class ScriptHolder {
     required this.urls,
     required this.colors,
     required this.sizes,
+    this.cards,
   });
 
   factory ScriptHolder.empty() => ScriptHolder(
@@ -30,6 +32,7 @@ class ScriptHolder {
         urls: null,
         colors: null,
         sizes: null,
+        cards: null,
       );
 
   String get script => '''
@@ -85,5 +88,32 @@ function toObject(){
 
 }
 toObject();
+''';
+
+  String get latestScript => '''
+function getCards() {
+  return ${cards ?? []};
+}
+
+
+function doit() {
+    var list = getCards();
+    var objects = [];
+    list.forEach(function (item, index) {
+      var dict = {
+        title: ${titles == null ? '""' : 'item.$titles'},
+        image: ${images == null ? '""' : 'item.$images'},
+        price: ${prices == null ? '""' : 'item.$prices'},
+        url: ${urls == null ? '""' : 'item.$urls'},
+        color: ${colors == null ? '""' : 'item.$colors'},
+        size: ${sizes == null ? '""' : 'item.$sizes'},
+        quantity: ${quantities == null ? '""' : 'item.$quantities'}
+    };
+      objects.push(dict)
+    });
+    return ${io.Platform.isIOS ? 'JSON.stringify(objects);' : 'objects'};
+  }
+
+doit();
 ''';
 }

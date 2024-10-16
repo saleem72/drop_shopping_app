@@ -114,5 +114,77 @@ class DataProvider {
       vendor: ShoppingWebsiteVendor.dior,
       keys: [],
     ),
+
+    const ShoppingWebsite(
+      id: 14,
+      name: 'alibaba',
+      url: 'https://alibaba.com',
+      image: null,
+      vendor: ShoppingWebsiteVendor.alibaba,
+      keys: [],
+    ),
+
+    const ShoppingWebsite(
+      id: 15,
+      name: 'aliexpress',
+      url: 'https://www.aliexpress.com',
+      image: null,
+      vendor: ShoppingWebsiteVendor.aliexpress,
+      keys: [],
+    ),
+
+    const ShoppingWebsite(
+      id: 16,
+      name: 'coachoutlet',
+      url: 'https://www.coachoutlet.com',
+      image: null,
+      vendor: ShoppingWebsiteVendor.coach,
+      keys: [],
+    ),
+
+    const ShoppingWebsite(
+      id: 17,
+      name: 'trendyol',
+      url: 'https://www.trendyol.com',
+      image: null,
+      vendor: ShoppingWebsiteVendor.trendyol,
+      keys: [],
+    ),
+
+    const ShoppingWebsite(
+      id: 17,
+      name: 'zalando',
+      url: 'https://www.zalando.co.uk',
+      image: null,
+      vendor: ShoppingWebsiteVendor.zalando,
+      keys: [],
+    ),
+
+    const ShoppingWebsite(
+      id: 18,
+      name: 'marksandspencer',
+      url: 'https://www.marksandspencer.com',
+      image: null,
+      vendor: ShoppingWebsiteVendor.marksAndSpencer,
+      keys: [],
+    ),
+
+    const ShoppingWebsite(
+      id: 18,
+      name: 'hobbs',
+      url: 'https://www.hobbs.com/',
+      image: null,
+      vendor: ShoppingWebsiteVendor.hobbs,
+      keys: [],
+    ),
+
+    const ShoppingWebsite(
+      id: 19,
+      name: 'product',
+      url: 'https://www.amazon.co.uk/',
+      image: null,
+      vendor: ShoppingWebsiteVendor.amazon,
+      keys: [],
+    ),
   ];
 }

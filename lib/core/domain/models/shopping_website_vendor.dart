@@ -14,6 +14,13 @@ enum ShoppingWebsiteVendor {
   amazon,
   ebay,
   dior,
+  alibaba,
+  aliexpress,
+  coach,
+  trendyol,
+  zalando,
+  marksAndSpencer,
+  hobbs,
   unKnown;
 
   static ShoppingWebsiteVendor fromString(String value) => switch (value) {
@@ -27,6 +34,10 @@ enum ShoppingWebsiteVendor {
         "sephora" => ShoppingWebsiteVendor.sephora,
         "ebay" => ShoppingWebsiteVendor.ebay,
         "dior" => ShoppingWebsiteVendor.dior,
+        "alibaba" => ShoppingWebsiteVendor.alibaba,
+        "trendyol" => ShoppingWebsiteVendor.trendyol,
+        "zalando" => ShoppingWebsiteVendor.zalando,
+        "hobbs" => ShoppingWebsiteVendor.hobbs,
         String() => ShoppingWebsiteVendor.unKnown,
       };
 
@@ -42,6 +53,17 @@ enum ShoppingWebsiteVendor {
           ScriptHolderProvider.sephoraScriptHolder,
         ShoppingWebsiteVendor.ebay => ScriptHolderProvider.ebayScriptHolder,
         ShoppingWebsiteVendor.dior => ScriptHolderProvider.diorScriptHolder,
+        ShoppingWebsiteVendor.alibaba => ScriptHolder.empty(),
+        ShoppingWebsiteVendor.aliexpress =>
+          ScriptHolderProvider.aliexpressScriptHolder,
+        ShoppingWebsiteVendor.coach => ScriptHolderProvider.coachScriptHolder,
+        ShoppingWebsiteVendor.trendyol =>
+          ScriptHolderProvider.trendyolScriptHolder,
+        ShoppingWebsiteVendor.zalando =>
+          ScriptHolderProvider.zalandoScriptHolder,
+        ShoppingWebsiteVendor.marksAndSpencer =>
+          ScriptHolderProvider.marksAndSpencerScriptHolder,
+        ShoppingWebsiteVendor.hobbs => ScriptHolderProvider.hobbsScriptHolder,
         ShoppingWebsiteVendor.unKnown => ScriptHolder.empty(),
       };
 
@@ -56,6 +78,13 @@ enum ShoppingWebsiteVendor {
         ShoppingWebsiteVendor.sephora => 'sephora',
         ShoppingWebsiteVendor.ebay => 'ebay',
         ShoppingWebsiteVendor.dior => 'dior',
+        ShoppingWebsiteVendor.alibaba => 'ali baba',
+        ShoppingWebsiteVendor.aliexpress => 'aliexpress',
+        ShoppingWebsiteVendor.coach => 'COACH',
+        ShoppingWebsiteVendor.trendyol => 'trendyol',
+        ShoppingWebsiteVendor.zalando => 'zalando',
+        ShoppingWebsiteVendor.marksAndSpencer => 'marksAndSpencer',
+        ShoppingWebsiteVendor.hobbs => 'hobbs',
         ShoppingWebsiteVendor.unKnown => 'unKnown',
       };
 }

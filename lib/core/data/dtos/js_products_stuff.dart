@@ -18,6 +18,7 @@ class ProductsStuffResponse {
   List<String> urls;
   List<String> colors;
   List<String> sizes;
+  List<Map<String, String>> properties;
 
   ProductsStuffResponse({
     required this.titles,
@@ -27,6 +28,7 @@ class ProductsStuffResponse {
     required this.urls,
     required this.colors,
     required this.sizes,
+    required this.properties,
   });
 
   factory ProductsStuffResponse.fromJson(Map<String, dynamic> decodedJson) =>
@@ -52,6 +54,7 @@ class ProductsStuffResponse {
         sizes: decodedJson["sizes"] == null
             ? []
             : List<String>.from(decodedJson["sizes"].map((x) => x)),
+        properties: [],
       );
 
   JSProductsStuff toModel() => JSProductsStuff(
@@ -104,6 +107,8 @@ class JSProductsStuff {
         url: urls.hasIndex(index) ? urls[index] : '',
         color: colors.hasIndex(index) ? colors[index] : '',
         size: sizes.hasIndex(index) ? sizes[index] : '',
+        properties: [],
+        shippingCost: 0,
       ),
     );
 

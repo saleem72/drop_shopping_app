@@ -68,6 +68,8 @@ class HMCartExtractor implements CartExtractor {
           url: urls[index],
           color: colors[index] ?? '',
           size: sizes[index] ?? '',
+          properties: [],
+          shippingCost: 0,
         ),
       );
       return products;
@@ -138,6 +140,8 @@ class HMCartExtractor implements CartExtractor {
           url: url,
           color: color,
           size: size,
+          properties: [],
+          shippingCost: 0,
         );
 
         // final secondDiv1 =

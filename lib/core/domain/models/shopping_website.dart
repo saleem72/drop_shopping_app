@@ -15,6 +15,7 @@ class ShoppingWebsite extends Equatable {
   final ShoppingWebsiteVendor vendor;
   final List<CartItemKeyDetails> keys;
   final String? script;
+
   const ShoppingWebsite({
     required this.id,
     required this.name,
@@ -24,6 +25,35 @@ class ShoppingWebsite extends Equatable {
     required this.keys,
     this.script,
   });
+
+  String get addressChangeUrl {
+    if (url.contains('.amazon.')) {
+      if (url.contains('.com/')) {
+        return 'https://www.amazon.com/gp/delivery/ajax/address-change.html';
+      }
+
+      if (url.contains('.co.uk/')) {
+        return 'https://www.amazon.co.uk/portal-migration/hz/glow/address-change?actionSource=glow';
+      }
+    }
+
+    return '';
+  }
+  //
+
+  String get zipCode {
+    if (url.contains('.amazon.')) {
+      if (url.contains('.com/')) {
+        return '33101';
+      }
+
+      if (url.contains('.co.uk/')) {
+        return 'Se146ef';
+      }
+    }
+
+    return '';
+  }
 
   @override
   List<Object?> get props => [id, url, image];

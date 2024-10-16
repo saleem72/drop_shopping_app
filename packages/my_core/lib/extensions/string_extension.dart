@@ -10,4 +10,10 @@ extension StringSpecific on String {
     final aStr = replaceAll(RegExp(r'[0-9.]'), '');
     return aStr.trim();
   }
+
+  bool isValidCurrency() {
+    final str = onlyCurrency();
+    final number = double.tryParse(str);
+    return number != null;
+  }
 }
